@@ -14,6 +14,7 @@ namespace HWCinema.CoreFolders
         public List <Hall> Halls { get; set; }
         public List<FilmData> Films { get; set; }
         public List <ScheduleData> data { get; set; }
+        public List<ScheduleData> tmp{ get; set; }
         public List<string> NameSessions { get; set; }
         private Core()
         {
@@ -34,7 +35,10 @@ namespace HWCinema.CoreFolders
 
         public void CreateScheduleData()
         {
-            
+            if (Halls[0].AllTimeWorkInMinutes() < 1)
+            {
+
+            }
         }
     }
 }
