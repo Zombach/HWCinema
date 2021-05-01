@@ -8,11 +8,16 @@ namespace HWCinema.CoreFolders
 {
     public class ScheduleData
     {
-        public string ScheduleLine { get; private set;}
+        public Hall Hall { get; set; }
+        public FilmData Film { get; set; }
+        public int TimeLeftWork { get; set; }
 
-        public ScheduleData(string time, string name)
+
+        public ScheduleData(Hall hall, FilmData film, int time)
         {
-            ScheduleLine = time + " " + name;
+            Hall = hall;
+            Film = film;
+            TimeLeftWork = time;
         }
     }
 }
