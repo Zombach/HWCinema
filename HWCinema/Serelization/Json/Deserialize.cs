@@ -19,7 +19,7 @@ namespace HWCinema.Serelization.Json
             }
             catch
             {
-                settings = null;
+                //settings = null;
             }
             return settings;
         }
