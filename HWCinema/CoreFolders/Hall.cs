@@ -180,6 +180,43 @@ namespace HWCinema.CoreFolders
                 }
             }
         }
-        
+
+        public override bool Equals(object obj)
+        {
+            Hall hall = (Hall)obj;
+            if (this.Name != hall.Name)
+            {
+                return false;
+            }
+            if (this._hourOpen != hall._hourOpen)
+            {
+                return false;
+            }
+            if (this._hourClose != hall._hourClose)
+            {
+                return false;
+            }
+            if (this._minutesOpen != hall._minutesOpen)
+            {
+                return false;
+            }
+            if (this._minutesClose != hall._minutesClose)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -910441382;
+            hashCode = hashCode * -1521134295 + _hourOpen.GetHashCode();
+            hashCode = hashCode * -1521134295 + _minutesOpen.GetHashCode();
+            hashCode = hashCode * -1521134295 + _hourClose.GetHashCode();
+            hashCode = hashCode * -1521134295 + _minutesClose.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            return hashCode;
+        }
     }
 }
