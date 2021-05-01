@@ -33,6 +33,7 @@ namespace HWCinema.Forms
             this.View = new System.Windows.Forms.Button();
             this.Loading = new System.Windows.Forms.Button();
             this.Saving = new System.Windows.Forms.Button();
+            this.MakeSchedule = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ManagementHalls
@@ -72,11 +73,22 @@ namespace HWCinema.Forms
             this.Saving.Text = "Выгрузить расписание";
             this.Saving.UseVisualStyleBackColor = true;
             // 
+            // MakeSchedule
+            // 
+            this.MakeSchedule.Location = new System.Drawing.Point(221, 167);
+            this.MakeSchedule.Name = "MakeSchedule";
+            this.MakeSchedule.Size = new System.Drawing.Size(148, 48);
+            this.MakeSchedule.TabIndex = 4;
+            this.MakeSchedule.Text = "Составить расписание";
+            this.MakeSchedule.UseVisualStyleBackColor = true;
+            this.MakeSchedule.Click += new System.EventHandler(this.MakeSchedule_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(561, 353);
+            this.Controls.Add(this.MakeSchedule);
             this.Controls.Add(this.Saving);
             this.Controls.Add(this.Loading);
             this.Controls.Add(this.View);
@@ -93,5 +105,6 @@ namespace HWCinema.Forms
         private System.Windows.Forms.Button View;
         private System.Windows.Forms.Button Loading;
         private System.Windows.Forms.Button Saving;
+        private System.Windows.Forms.Button MakeSchedule;
     }
 }

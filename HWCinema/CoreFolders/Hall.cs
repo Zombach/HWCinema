@@ -26,9 +26,9 @@ namespace HWCinema.CoreFolders
             }
             set
             {
-                if (value< 0 || value> 23)
+                if (value < 10 || value> 23)
                 {
-                    _hourOpen = 0;
+                    _hourOpen = 10;
                 }
                 else
                 {
@@ -44,7 +44,7 @@ namespace HWCinema.CoreFolders
             }
             set
             {
-                if (value < 0 || value > 23)
+                if (value < 10 || value > 23)
                 {
                     _hourClose = 0;
                 }
@@ -94,7 +94,7 @@ namespace HWCinema.CoreFolders
         public Hall(string name)
         {
             Name = name;
-            HourOpening = 0;
+            HourOpening = 10;
             HourClosing = 0;
             MinutesOpen = 0;
             MinutesClosing = 0;

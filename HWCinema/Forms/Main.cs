@@ -20,7 +20,13 @@ namespace HWCinema.Forms
         private void Create_Click(object sender, EventArgs e)
         {
             HallsManagement create = new HallsManagement();
-           create.Show();
+            create.Show();
+        }
+
+        private void MakeSchedule_Click(object sender, EventArgs e)
+        {
+            Schedule schedule = new Schedule();
+            schedule.Show();
         }
     }
 }
