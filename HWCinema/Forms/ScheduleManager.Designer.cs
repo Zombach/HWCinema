@@ -134,7 +134,7 @@ namespace HWCinema.Forms
             this.Controls.Add(this.CountFilms);
             this.Controls.Add(this.NameMovie);
             this.Name = "ScheduleManager";
-            this.Text = "Schedule";
+            this.Text = "Schedule Manager";
             ((System.ComponentModel.ISupportInitialize)(this.FilmsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).EndInit();
