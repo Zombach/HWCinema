@@ -3,7 +3,7 @@ using HWСinema.CoreFolders;
 
 namespace HWСinema.Forms
 {
-    partial class Create
+    partial class HallsManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -168,7 +168,7 @@ namespace HWСinema.Forms
             this.SetTimeWork.UseVisualStyleBackColor = true;
             this.SetTimeWork.Click += new System.EventHandler(this.SetTimeWork_Click);
             // 
-            // Create
+            // HallsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,8 +185,8 @@ namespace HWСinema.Forms
             this.Controls.Add(this.NameNewHall);
             this.Controls.Add(this.AddHall);
             this.Controls.Add(this.Halls);
-            this.Name = "Create";
-            this.Text = "Create";
+            this.Name = "HallsManagement";
+            this.Text = "Halls Management";
             ((System.ComponentModel.ISupportInitialize)(this.CoreSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
