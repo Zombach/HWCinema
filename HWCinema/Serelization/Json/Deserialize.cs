@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using HWCinema.Serelization.Structs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace HWCinema.Serelization.Json
 {
     public class Deserialize
     {
-        public StructSettings DeserializerSetting(string data)
+        public Settings DeserializerSetting(string data)
         {
-            StructSettings settings;
+            Settings settings = new Settings();
             try
             {
-                settings = JsonConvert.DeserializeObject<StructSettings>(data);
+                settings.Struct = JsonConvert.DeserializeObject<StructSettings>(data);
             }
             catch
             {
