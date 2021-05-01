@@ -11,10 +11,10 @@ namespace HWCinema.CoreFolders
         public string Name { get; set; }
         public int Time { get; set; }
 
-        public FilmData(string name)
+        public FilmData(string name, int time)
         {
             Name = name;
-            Time = 0;
+            Time = time;
         }
     }
 }

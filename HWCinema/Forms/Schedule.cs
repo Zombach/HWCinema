@@ -18,11 +18,15 @@ namespace HWCinema.Forms
         private int indexName = 1;
         private int _index;
         private FilmData _tmpData;
+        private string _tmpName;
+        private bool _isChangeName = false;
+        public int DefaultTime { get; set; }
         public Schedule()
         {
             InitializeComponent();
             FilmsSource.DataSource = _core.Films;
             _countFilms = 0;
+            DefaultTime = 0;
         }
 
         private void CountFilms_ValueChanged(object sender, EventArgs e)
@@ -32,7 +36,7 @@ namespace HWCinema.Forms
                 FilmData[] filmData = new FilmData[(int)CountFilms.Value - _countFilms];
                 for (int i = 0; i < filmData.Length; i++)
                 {
-                    filmData[i] = new FilmData("Фильм " + indexName++);                    
+                    filmData[i] = new FilmData("Фильм " + indexName++, DefaultTime);                    
                 }
                 _core.Films.AddRange(filmData);
             }
@@ -50,7 +54,7 @@ namespace HWCinema.Forms
         }
 
         private void NameMovie_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {            
             if (_core.Films.Count != 0)
             {
                 if (NameMovie.SelectedIndex != -1)
@@ -70,8 +74,28 @@ namespace HWCinema.Forms
 
         private void NameMovie_TextChanged(object sender, EventArgs e)
         {
-            _core.Films[_index].Name = NameMovie.Text;
-            FilmsSource.ResetBindings(true);
+            _isChangeName = true;
+            _tmpName = NameMovie.Text;
+        }
+
+        private void ChangeNameMovies()
+        {
+            _core.Films[_index].Name = _tmpName;
+            FilmsSource.ResetBindings(true);            
+        }
+
+        private void NameMovie_Click(object sender, EventArgs e)
+        {
+            if (_isChangeName)
+            {
+                ChangeNameMovies();
+                _isChangeName = false;
+            }
+        }
+
+        private void TimeDefault_ValueChanged(object sender, EventArgs e)
+        {
+            DefaultTime = (int)TimeDefault.Value;
         }
     }
 }
