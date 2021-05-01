@@ -10,14 +10,16 @@ namespace HWCinema.CoreFolders
     {
         public Hall Hall { get; set; }
         public FilmData Film { get; set; }
-        public int TimeLeftWork { get; set; }
+        public FilmData NextFilm { get; set; }
+        public int[] TimeLeftWork { get; set; }
 
 
-        public ScheduleData(Hall hall, FilmData film, int time)
+        public ScheduleData(Hall hall, FilmData film, FilmData nextFilm, int[] timeLeftWork)
         {
             Hall = hall;
             Film = film;
-            TimeLeftWork = time;
+            NextFilm = nextFilm;
+            TimeLeftWork = timeLeftWork;
         }
     }
 }

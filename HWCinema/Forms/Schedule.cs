@@ -18,5 +18,10 @@ namespace HWCinema.Forms
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _core.CreateSchedules();
+        }
     }
 }
