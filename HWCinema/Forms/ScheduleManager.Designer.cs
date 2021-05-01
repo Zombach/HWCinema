@@ -37,7 +37,7 @@ namespace HWCinema.Forms
             this.TimeFilm = new System.Windows.Forms.NumericUpDown();
             this.TimeDefault = new System.Windows.Forms.NumericUpDown();
             this.TextTimeDefault = new System.Windows.Forms.TextBox();
-            this.Create = new System.Windows.Forms.Button();
+            this.SaveSchedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FilmsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).BeginInit();
@@ -112,21 +112,21 @@ namespace HWCinema.Forms
             this.TextTimeDefault.Text = "Длина фильма по умолчанию";
             this.TextTimeDefault.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Create
+            // SaveSchedule
             // 
-            this.Create.Location = new System.Drawing.Point(464, 278);
-            this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(278, 108);
-            this.Create.TabIndex = 7;
-            this.Create.Text = "Предоставить расписание";
-            this.Create.UseVisualStyleBackColor = true;
+            this.SaveSchedule.Location = new System.Drawing.Point(391, 289);
+            this.SaveSchedule.Name = "SaveSchedule";
+            this.SaveSchedule.Size = new System.Drawing.Size(252, 76);
+            this.SaveSchedule.TabIndex = 7;
+            this.SaveSchedule.Text = "Сохранить изменения";
+            this.SaveSchedule.UseVisualStyleBackColor = true;
             // 
             // ScheduleManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Create);
+            this.Controls.Add(this.SaveSchedule);
             this.Controls.Add(this.TextTimeDefault);
             this.Controls.Add(this.TimeDefault);
             this.Controls.Add(this.TimeFilm);
@@ -153,6 +153,6 @@ namespace HWCinema.Forms
         private System.Windows.Forms.BindingSource FilmsSource;
         private System.Windows.Forms.NumericUpDown TimeDefault;
         private System.Windows.Forms.TextBox TextTimeDefault;
-        private System.Windows.Forms.Button Create;
+        private System.Windows.Forms.Button SaveSchedule;
     }
 }

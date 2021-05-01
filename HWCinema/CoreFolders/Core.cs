@@ -13,6 +13,7 @@ namespace HWCinema.CoreFolders
         public string MyPathSettings { get; set; }
         public List <Hall> Halls { get; set; }
         public List<FilmData> Films { get; set; }
+        public List <ScheduleData> data { get; set; }
         public List<string> NameSessions { get; set; }
         private Core()
         {

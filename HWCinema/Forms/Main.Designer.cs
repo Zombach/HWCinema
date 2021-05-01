@@ -54,6 +54,7 @@ namespace HWCinema.Forms
             this.View.TabIndex = 1;
             this.View.Text = "Отобразить расписание";
             this.View.UseVisualStyleBackColor = true;
+            this.View.Click += new System.EventHandler(this.View_Click);
             // 
             // Loading
             // 

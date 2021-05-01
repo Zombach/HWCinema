@@ -90,6 +90,9 @@
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Schedule.resx">
+      <DependentUpon>Schedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ScheduleManager.resx">
       <DependentUpon>ScheduleManager.cs</DependentUpon>
     </EmbeddedResource>
