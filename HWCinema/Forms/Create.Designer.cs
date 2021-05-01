@@ -37,8 +37,14 @@ namespace HWСinema.Forms
             this.AddHall = new System.Windows.Forms.Button();
             this.NameNewHall = new System.Windows.Forms.TextBox();
             this.RemoveHall = new System.Windows.Forms.Button();
-            this.TimeOpen = new System.Windows.Forms.TextBox();
-            this.TimeClose = new System.Windows.Forms.TextBox();
+            this.TimeOpenHours = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextOpening = new System.Windows.Forms.TextBox();
+            this.TextClosing = new System.Windows.Forms.TextBox();
+            this.TimeOpenMinutes = new System.Windows.Forms.TextBox();
+            this.TimeCloseMinutes = new System.Windows.Forms.TextBox();
+            this.TimeCloseHours = new System.Windows.Forms.TextBox();
+            this.SetTimeWork = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CoreSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,27 +96,91 @@ namespace HWСinema.Forms
             this.RemoveHall.UseVisualStyleBackColor = true;
             this.RemoveHall.Click += new System.EventHandler(this.RemoveHall_Click);
             // 
-            // TimeOpen
+            // TimeOpenHours
             // 
-            this.TimeOpen.Location = new System.Drawing.Point(611, 95);
-            this.TimeOpen.Name = "TimeOpen";
-            this.TimeOpen.Size = new System.Drawing.Size(107, 20);
-            this.TimeOpen.TabIndex = 4;
+            this.TimeOpenHours.Location = new System.Drawing.Point(346, 116);
+            this.TimeOpenHours.Name = "TimeOpenHours";
+            this.TimeOpenHours.Size = new System.Drawing.Size(47, 20);
+            this.TimeOpenHours.TabIndex = 4;
+            this.TimeOpenHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TimeClose
+            // textBox1
             // 
-            this.TimeClose.Location = new System.Drawing.Point(611, 121);
-            this.TimeClose.Name = "TimeClose";
-            this.TimeClose.Size = new System.Drawing.Size(107, 20);
-            this.TimeClose.TabIndex = 5;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(346, 55);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(107, 20);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.Text = "Время работы";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TextOpening
+            // 
+            this.TextOpening.Enabled = false;
+            this.TextOpening.Location = new System.Drawing.Point(346, 90);
+            this.TextOpening.Name = "TextOpening";
+            this.TextOpening.Size = new System.Drawing.Size(107, 20);
+            this.TextOpening.TabIndex = 7;
+            this.TextOpening.Text = "Открытие";
+            this.TextOpening.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TextClosing
+            // 
+            this.TextClosing.Enabled = false;
+            this.TextClosing.Location = new System.Drawing.Point(346, 142);
+            this.TextClosing.Name = "TextClosing";
+            this.TextClosing.Size = new System.Drawing.Size(107, 20);
+            this.TextClosing.TabIndex = 8;
+            this.TextClosing.Text = "Закрытие";
+            this.TextClosing.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TimeOpenMinutes
+            // 
+            this.TimeOpenMinutes.Location = new System.Drawing.Point(409, 116);
+            this.TimeOpenMinutes.Name = "TimeOpenMinutes";
+            this.TimeOpenMinutes.Size = new System.Drawing.Size(44, 20);
+            this.TimeOpenMinutes.TabIndex = 9;
+            this.TimeOpenMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TimeCloseMinutes
+            // 
+            this.TimeCloseMinutes.Location = new System.Drawing.Point(409, 168);
+            this.TimeCloseMinutes.Name = "TimeCloseMinutes";
+            this.TimeCloseMinutes.Size = new System.Drawing.Size(44, 20);
+            this.TimeCloseMinutes.TabIndex = 11;
+            this.TimeCloseMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TimeCloseHours
+            // 
+            this.TimeCloseHours.Location = new System.Drawing.Point(346, 168);
+            this.TimeCloseHours.Name = "TimeCloseHours";
+            this.TimeCloseHours.Size = new System.Drawing.Size(47, 20);
+            this.TimeCloseHours.TabIndex = 10;
+            this.TimeCloseHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SetTimeWork
+            // 
+            this.SetTimeWork.Location = new System.Drawing.Point(333, 194);
+            this.SetTimeWork.Name = "SetTimeWork";
+            this.SetTimeWork.Size = new System.Drawing.Size(136, 35);
+            this.SetTimeWork.TabIndex = 12;
+            this.SetTimeWork.Text = "Установить время";
+            this.SetTimeWork.UseVisualStyleBackColor = true;
+            this.SetTimeWork.Click += new System.EventHandler(this.SetTimeWork_Click);
             // 
             // Create
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.TimeClose);
-            this.Controls.Add(this.TimeOpen);
+            this.ClientSize = new System.Drawing.Size(498, 292);
+            this.Controls.Add(this.SetTimeWork);
+            this.Controls.Add(this.TimeCloseMinutes);
+            this.Controls.Add(this.TimeCloseHours);
+            this.Controls.Add(this.TimeOpenMinutes);
+            this.Controls.Add(this.TextClosing);
+            this.Controls.Add(this.TextOpening);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TimeOpenHours);
             this.Controls.Add(this.RemoveHall);
             this.Controls.Add(this.NameNewHall);
             this.Controls.Add(this.AddHall);
@@ -130,7 +200,13 @@ namespace HWСinema.Forms
         private System.Windows.Forms.TextBox NameNewHall;
         private System.Windows.Forms.BindingSource CoreSource;
         private System.Windows.Forms.Button RemoveHall;
-        private System.Windows.Forms.TextBox TimeOpen;
-        private System.Windows.Forms.TextBox TimeClose;
+        private System.Windows.Forms.TextBox TimeOpenHours;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TextOpening;
+        private System.Windows.Forms.TextBox TextClosing;
+        private System.Windows.Forms.TextBox TimeOpenMinutes;
+        private System.Windows.Forms.TextBox TimeCloseMinutes;
+        private System.Windows.Forms.TextBox TimeCloseHours;
+        private System.Windows.Forms.Button SetTimeWork;
     }
 }

@@ -29,21 +29,21 @@ namespace HWСinema.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.Create = new System.Windows.Forms.Button();
+            this.ManagementHalls = new System.Windows.Forms.Button();
             this.View = new System.Windows.Forms.Button();
             this.Loading = new System.Windows.Forms.Button();
             this.Saving = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Create
+            // ManagementHalls
             // 
-            this.Create.Location = new System.Drawing.Point(66, 62);
-            this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(200, 80);
-            this.Create.TabIndex = 0;
-            this.Create.Text = "Составить расписание";
-            this.Create.UseVisualStyleBackColor = true;
-            this.Create.Click += new System.EventHandler(this.Create_Click);
+            this.ManagementHalls.Location = new System.Drawing.Point(66, 62);
+            this.ManagementHalls.Name = "ManagementHalls";
+            this.ManagementHalls.Size = new System.Drawing.Size(200, 80);
+            this.ManagementHalls.TabIndex = 0;
+            this.ManagementHalls.Text = "Управленние залами";
+            this.ManagementHalls.UseVisualStyleBackColor = true;
+            this.ManagementHalls.Click += new System.EventHandler(this.Create_Click);
             // 
             // View
             // 
@@ -80,7 +80,7 @@ namespace HWСinema.Forms
             this.Controls.Add(this.Saving);
             this.Controls.Add(this.Loading);
             this.Controls.Add(this.View);
-            this.Controls.Add(this.Create);
+            this.Controls.Add(this.ManagementHalls);
             this.Name = "Main";
             this.Text = "Main";
             this.ResumeLayout(false);
@@ -89,7 +89,7 @@ namespace HWСinema.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button Create;
+        private System.Windows.Forms.Button ManagementHalls;
         private System.Windows.Forms.Button View;
         private System.Windows.Forms.Button Loading;
         private System.Windows.Forms.Button Saving;

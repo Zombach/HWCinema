@@ -11,66 +11,85 @@ namespace HWСinema.CoreFolders
         private string _time;
         private string _zeroChar_H = "";
         private string _zeroChar_M = "";
+        private int _hourOpen;
+        private int _minutesOpen;
+        private int _hourClose;
+        private int _minutesClose;
 
 
         public string Name { get; set; }
-        public int HourOpening { get; set; }
-        //{
-        //    get
-        //    {
-        //        return HourOpening;
-        //    }
-        //    set
-        //    {
-        //        if (value < 0 || value > 12)
-        //        {
-        //            value = 0;
-        //        }
-        //    }
-        //}
-        public int HourClosing { get; set; }
-        //{
-        //    get
-        //    {
-        //        return HourClosing;
-        //    }
-        //    set
-        //    {
-        //        if (value < 0 || value > 12)
-        //        {
-        //            value = 0;
-        //        }
-        //    }
-        //}
-
-        public int MinutesOpen { get; set; }
-        //{
-        //    get
-        //    {
-        //        return MinutesOpen;
-        //    }
-        //    set
-        //    {
-        //        if (value < 0 || value > 60)
-        //        {
-        //            value = 0;
-        //        }
-        //    }
-        //}
-        public int MinutesClosing { get; set; }
-        //{
-        //    get
-        //    {
-        //        return MinutesClosing;
-        //    }
-        //    set
-        //    {
-        //        if (value < 0 || value > 60)
-        //        {
-        //            value = 0;
-        //        }
-        //    }
-        //}
+        public int HourOpening
+        {
+            get
+            {
+                return _hourOpen;
+            }
+            set
+            {
+                if (value< 0 || value> 23)
+                {
+                    _hourOpen = 0;
+                }
+                else
+                {
+                    _hourOpen = value;
+                }
+            }
+        }
+        public int HourClosing
+        {
+            get
+            {
+                return _hourClose;
+            }
+            set
+            {
+                if (value < 0 || value > 23)
+                {
+                    _hourClose = 0;
+                }
+                else
+                {
+                    _hourClose = value;
+                }
+            }
+        }
+        public int MinutesOpen
+        {
+            get
+            {
+                return _minutesOpen;
+            }
+            set
+            {
+                if (value < 0 || value > 59)
+                {
+                    _minutesOpen = 0;
+                }
+                else
+                {
+                    _minutesOpen = value;
+                }
+            }
+        }
+        public int MinutesClosing
+        {
+            get
+            {
+                return _minutesClose;
+            }
+            set
+            {
+                if (value < 0 || value > 59)
+                {
+                    _minutesClose = 0;
+                }
+                else
+                {
+                    _minutesClose = value;
+                }
+            }
+        }
 
         public Hall(string name)
         {
@@ -81,15 +100,15 @@ namespace HWСinema.CoreFolders
             MinutesClosing = 0;
         }
 
-        public void SetTimeOpening(int hour, int minutes)
-        {
-            HourOpening = hour;
-            MinutesOpen = minutes;
+        public void SetTimeOpening(string hour, string minutes)
+        {            
+            HourOpening = Convert.ToInt32(hour);
+            MinutesOpen = Convert.ToInt32(minutes);
         }
-        public void SetTimeClosing(int hour, int minutes)
+        public void SetTimeClosing(string hour, string minutes)
         {
-            HourClosing = hour;
-            MinutesClosing = minutes;
+            HourClosing = Convert.ToInt32(hour);
+            MinutesClosing = Convert.ToInt32(minutes);
         }
 
         public string GetTimeWorking()
@@ -127,16 +146,17 @@ namespace HWСinema.CoreFolders
         }
         private void SetZeroChar_H(bool isOpen)
         {
+            _zeroChar_H = "";
             if (isOpen)
             {
-                if (HourOpening < 10)
+                if (_hourOpen < 10)
                 {
                     _zeroChar_H = "0";
                 }
             }
             else
             {
-                if (HourClosing < 10)
+                if (_hourClose < 10)
                 {
                     _zeroChar_H = "0";
                 }
@@ -144,16 +164,17 @@ namespace HWСinema.CoreFolders
         }
         private void SetZeroChar_M(bool isOpen)
         {
+            _zeroChar_M = "";
             if (isOpen)
             {
-                if (MinutesOpen < 10)
+                if (_minutesOpen < 10)
                 {
                     _zeroChar_M = "0";
                 }
             }
             else
             {
-                if (MinutesClosing < 10)
+                if (_minutesClose< 10)
                 {
                     _zeroChar_M = "0";
                 }

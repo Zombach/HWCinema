@@ -46,7 +46,7 @@ namespace HWСinema.Forms
         {
             if (NameNewHall.Text.Length > 10)
             {
-                MessageBox.Show("Укажите более коротнкое название");
+                MessageBox.Show("Укажите более короткое название");
             }
             if (NameNewHall.Text.Length < 3)
             {
@@ -82,8 +82,24 @@ namespace HWСinema.Forms
 
         private void Halls_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TimeOpen.Text = _core.Halls[Halls.SelectedIndex].GetTimeOpening();
-            TimeClose.Text = _core.Halls[Halls.SelectedIndex].GetTimeClosing();
+            if (Halls.SelectedIndex != -1)
+            {
+                string tmpTime = _core.Halls[Halls.SelectedIndex].GetTimeOpening();
+                string[] hourAndMinutes = tmpTime.Split(':');
+                TimeOpenHours.Text = hourAndMinutes[0];
+                TimeOpenMinutes.Text = hourAndMinutes[1];
+
+                tmpTime = _core.Halls[Halls.SelectedIndex].GetTimeClosing();
+                hourAndMinutes = tmpTime.Split(':');
+                TimeCloseHours.Text = hourAndMinutes[0];
+                TimeCloseMinutes.Text = hourAndMinutes[1];
+            }
+        }
+
+        private void SetTimeWork_Click(object sender, EventArgs e)
+        {
+            _core.Halls[Halls.SelectedIndex].SetTimeOpening(TimeOpenHours.Text, TimeOpenMinutes.Text);
+            _core.Halls[Halls.SelectedIndex].SetTimeClosing(TimeCloseHours.Text, TimeCloseMinutes.Text);
         }
     }
 }
