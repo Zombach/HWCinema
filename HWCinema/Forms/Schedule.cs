@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HWCinema.CoreFolders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,7 @@ namespace HWCinema.Forms
     public partial class Schedule : Form
     {
         private int _countFilms;
-        private int _index;
-        private List<int> _timeFilms = new List<int>();   
+        private int _index; 
         public Schedule()
         {
             InitializeComponent();
@@ -25,13 +25,16 @@ namespace HWCinema.Forms
         {
             if (CountFilms.Value > _countFilms)
             {
-                string[] count = new string[(int)CountFilms.Value - _countFilms];
-                for (int i = 0; i < count.Length; i++)
+                FilmData[] filmData = new FilmData[(int)CountFilms.Value - _countFilms];
+                for (int i = 0; i < filmData.Length; i++)
                 {
-                    count[i] = "";
-                    _timeFilms.Add(0);
+                    filmData[i] = new FilmData
+                    {
+                        Name = "",
+                        Time = 0
+                    };
                 }
-                NameMovie.Items.AddRange(count);
+                NameMovie.Items.AddRange(filmData);
             }
             else if(CountFilms.Value < _countFilms)
             {
@@ -39,7 +42,6 @@ namespace HWCinema.Forms
                 for (int i = 0; i < tmp; i++)
                 {
                     NameMovie.Items.RemoveAt(NameMovie.Items.Count - 1);
-                    _timeFilms.RemoveAt(NameMovie.Items.Count - 1);
                 }                
             }
             _countFilms = (int)CountFilms.Value;
@@ -47,18 +49,21 @@ namespace HWCinema.Forms
 
         private void NameMovie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TimeFilm.Value = _timeFilms[NameMovie.SelectedIndex];
+            FilmData tmpTime = (FilmData)NameMovie.Items[NameMovie.SelectedIndex];
+            TimeFilm.Value = tmpTime.Time;
             _index = NameMovie.SelectedIndex;
         }
 
         private void TimeFilm_ValueChanged(object sender, EventArgs e)
         {
-            _timeFilms[NameMovie.SelectedIndex] = (int)TimeFilm.Value;
+            FilmData tmpTime = (FilmData)NameMovie.Items[NameMovie.SelectedIndex];
+            tmpTime.Time = (int)TimeFilm.Value;
         }
 
         private void NameMovie_TextChanged(object sender, EventArgs e)
-        {            
-            NameMovie.Items[_index] = NameMovie.Text;
+        {
+            FilmData tmpName = (FilmData)NameMovie.Items[_index];
+            tmpName.Name = NameMovie.Text;
         }
     }
 }

@@ -41,6 +41,7 @@ namespace HWCinema.Forms
             // 
             this.NameMovie.FormattingEnabled = true;
             this.NameMovie.Location = new System.Drawing.Point(193, 69);
+            this.NameMovie.DisplayMember = "Name";
             this.NameMovie.Name = "NameMovie";
             this.NameMovie.Size = new System.Drawing.Size(286, 21);
             this.NameMovie.TabIndex = 0;
