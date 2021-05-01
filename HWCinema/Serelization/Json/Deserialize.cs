@@ -10,16 +10,16 @@ namespace HWCinema.Serelization.Json
 {
     public class Deserialize
     {
-        public StructSettings DeserializerSetting(string data)
+        public Settings DeserializerSetting(string data)
         {
-            StructSettings settings;
+            Settings settings = new Settings();
             try
             {
-                settings = JsonConvert.DeserializeObject<StructSettings>(data);
+                settings.Struct = JsonConvert.DeserializeObject<StructSettings>(data);
             }
             catch
             {
-                //settings = null;
+                settings = null;
             }
             return settings;
         }

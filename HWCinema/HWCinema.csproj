@@ -75,6 +75,7 @@
     <Compile Include="Serelization\Json\LoadSettings.cs" />
     <Compile Include="Serelization\Json\SaveSettings.cs" />
     <Compile Include="Serelization\Json\Serialize.cs" />
+    <Compile Include="Serelization\Json\Settings.cs" />
     <Compile Include="Serelization\Structs\StructSettings.cs" />
     <EmbeddedResource Include="Forms\Create.resx">
       <DependentUpon>Create.cs</DependentUpon>
