@@ -31,8 +31,10 @@ namespace HWCinema.Forms
         {
             this.NameMovie = new System.Windows.Forms.ComboBox();
             this.CountFilms = new System.Windows.Forms.NumericUpDown();
-            this.TimeFilm = new System.Windows.Forms.TextBox();
+            this.TextTimeMinutes = new System.Windows.Forms.TextBox();
+            this.TimeFilm = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).BeginInit();
             this.SuspendLayout();
             // 
             // NameMovie
@@ -42,23 +44,33 @@ namespace HWCinema.Forms
             this.NameMovie.Name = "NameMovie";
             this.NameMovie.Size = new System.Drawing.Size(286, 21);
             this.NameMovie.TabIndex = 0;
+            this.NameMovie.SelectedIndexChanged += new System.EventHandler(this.NameMovie_SelectedIndexChanged);
+            this.NameMovie.TextChanged += new System.EventHandler(this.NameMovie_TextChanged);
             // 
-            // numericUpDown1
+            // CountFilms
             // 
             this.CountFilms.Location = new System.Drawing.Point(74, 71);
-            this.CountFilms.Name = "numericUpDown1";
+            this.CountFilms.Name = "CountFilms";
             this.CountFilms.Size = new System.Drawing.Size(56, 20);
             this.CountFilms.TabIndex = 1;
             this.CountFilms.ValueChanged += new System.EventHandler(this.CountFilms_ValueChanged);
             // 
+            // TextTimeMinutes
+            // 
+            this.TextTimeMinutes.Location = new System.Drawing.Point(590, 71);
+            this.TextTimeMinutes.Name = "TextTimeMinutes";
+            this.TextTimeMinutes.Size = new System.Drawing.Size(64, 20);
+            this.TextTimeMinutes.TabIndex = 3;
+            this.TextTimeMinutes.Text = "Минут";
+            this.TextTimeMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // TimeFilm
             // 
-            this.TimeFilm.Location = new System.Drawing.Point(509, 69);
+            this.TimeFilm.Location = new System.Drawing.Point(517, 72);
             this.TimeFilm.Name = "TimeFilm";
-            this.TimeFilm.Size = new System.Drawing.Size(120, 20);
-            this.TimeFilm.TabIndex = 2;
-            this.TimeFilm.Text = "00";
-            this.TimeFilm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TimeFilm.Size = new System.Drawing.Size(56, 20);
+            this.TimeFilm.TabIndex = 4;
+            this.TimeFilm.ValueChanged += new System.EventHandler(this.TimeFilm_ValueChanged);
             // 
             // Schedule
             // 
@@ -66,11 +78,13 @@ namespace HWCinema.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.TimeFilm);
+            this.Controls.Add(this.TextTimeMinutes);
             this.Controls.Add(this.CountFilms);
             this.Controls.Add(this.NameMovie);
             this.Name = "Schedule";
             this.Text = "Schedule";
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,6 +94,7 @@ namespace HWCinema.Forms
 
         private System.Windows.Forms.ComboBox NameMovie;
         private System.Windows.Forms.NumericUpDown CountFilms;
-        private System.Windows.Forms.TextBox TimeFilm;
+        private System.Windows.Forms.TextBox TextTimeMinutes;
+        private System.Windows.Forms.NumericUpDown TimeFilm;
     }
 }
