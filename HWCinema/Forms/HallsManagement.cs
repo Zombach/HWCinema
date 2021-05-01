@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace HWСinema.Forms
 {
-    public partial class Create : Form
+    public partial class HallsManagement : Form
     {
         private Core _core = Core.GetCore();
         private bool isActiveButton;
-        public Create()
+        public HallsManagement()
         {
             InitializeComponent();
             CoreSource.DataSource = _core.Halls;

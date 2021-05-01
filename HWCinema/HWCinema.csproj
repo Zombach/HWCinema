@@ -51,11 +51,11 @@
   <ItemGroup>
     <Compile Include="CoreFolders\Core.cs" />
     <Compile Include="CoreFolders\Hall.cs" />
-    <Compile Include="Forms\Create.cs">
+    <Compile Include="Forms\HallsManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Create.Designer.cs">
-      <DependentUpon>Create.cs</DependentUpon>
+    <Compile Include="Forms\HallsManagement.Designer.cs">
+      <DependentUpon>HallsManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
@@ -77,8 +77,8 @@
     <Compile Include="Serelization\Json\Serialize.cs" />
     <Compile Include="Serelization\Json\Settings.cs" />
     <Compile Include="Serelization\Structs\StructSettings.cs" />
-    <EmbeddedResource Include="Forms\Create.resx">
-      <DependentUpon>Create.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\HallsManagement.resx">
+      <DependentUpon>HallsManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

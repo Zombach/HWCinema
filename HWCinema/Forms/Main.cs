@@ -19,7 +19,7 @@ namespace HWСinema.Forms
 
         private void Create_Click(object sender, EventArgs e)
         {
-            Create create = new Create();
+            HallsManagement create = new HallsManagement();
            create.Show();
         }
     }
