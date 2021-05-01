@@ -5,9 +5,9 @@ namespace HWCinema.Serelization.Json
 {
     public class SaveSettings
     {
-        private Core _core = Core.GetCore();
         public void WriteSettings()
         {
+            Core _core = Core.GetCore();
             Serialize _serializer = new Serialize();
             using (FileStream fileStream = new FileStream(_core.MyPathSettings, FileMode.Create, FileAccess.Write, FileShare.None))
             {
