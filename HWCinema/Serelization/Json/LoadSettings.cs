@@ -11,17 +11,19 @@ namespace HWCinema.Serelization.Json
     public class LoadSettings
     {
         private Deserialize _deserializer = new Deserialize();
-        public void ReadSettings()
+        public StructSettings ReadSettings()
         {
+            StructSettings settings;
             using (FileStream fileStream = new FileStream(Core.GetCore().MyPathSettings, FileMode.Open, FileAccess.Read, FileShare.None))
             {
                 using (StreamReader streamReader = new StreamReader(fileStream))
                 {
-                    //settings = _deserializer.DeserializerSetting(streamReader.ReadToEnd());
+                    settings = _deserializer.DeserializerSetting(streamReader.ReadToEnd());
                     streamReader.Close();
                 }
                 fileStream.Close();
             }
+            return settings;
         }
     }
 }
