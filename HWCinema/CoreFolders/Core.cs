@@ -31,5 +31,10 @@ namespace HWCinema.CoreFolders
             }
             return _core;
         }
+
+        public void CreateScheduleData()
+        {
+            
+        }
     }
 }
