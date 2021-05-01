@@ -1,5 +1,5 @@
 ﻿
-namespace HWСinema.Forms
+namespace HWCinema.Forms
 {
     partial class Schedule
     {

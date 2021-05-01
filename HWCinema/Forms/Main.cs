@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HWСinema.Forms
+namespace HWCinema.Forms
 {
     public partial class Main : Form
     {

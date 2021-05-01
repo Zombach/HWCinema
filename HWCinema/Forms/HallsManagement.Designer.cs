@@ -1,7 +1,7 @@
 ﻿
-using HWСinema.CoreFolders;
+using HWCinema.CoreFolders;
 
-namespace HWСinema.Forms
+namespace HWCinema.Forms
 {
     partial class HallsManagement
     {

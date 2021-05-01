@@ -1,5 +1,5 @@
 ﻿using HWCinema.Serelization.Structs;
-using HWСinema.CoreFolders;
+using HWCinema.CoreFolders;
 using System;
 using System.Collections.Generic;
 using System.Linq;

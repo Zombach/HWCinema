@@ -1,4 +1,4 @@
-﻿using HWСinema.CoreFolders;
+﻿using HWCinema.CoreFolders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HWСinema.Forms
+namespace HWCinema.Forms
 {
     public partial class HallsManagement : Form
     {

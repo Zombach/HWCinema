@@ -1,4 +1,4 @@
-﻿using HWСinema.CoreFolders;
+﻿using HWCinema.CoreFolders;
 using System.IO;
 
 namespace HWCinema.Serelization.Json
