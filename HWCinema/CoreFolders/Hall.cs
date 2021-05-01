@@ -46,7 +46,7 @@ namespace HWCinema.CoreFolders
             {
                 if (value < 10 || value > 23)
                 {
-                    _hourClose = 0;
+                    _hourClose = 23;
                 }
                 else
                 {
@@ -82,7 +82,7 @@ namespace HWCinema.CoreFolders
             {
                 if (value < 0 || value > 59)
                 {
-                    _minutesClose = 0;
+                    _minutesClose = 59;
                 }
                 else
                 {
