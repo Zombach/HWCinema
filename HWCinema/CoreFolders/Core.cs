@@ -12,10 +12,13 @@ namespace HWCinema.CoreFolders
         private static Core _core;
         public string MyPathSettings { get; set; }
         public List <Hall> Halls { get; set; }
+        public List<FilmData> Films { get; set; }
+        public List <ScheduleData> data { get; set; }
         public List<string> NameSessions { get; set; }
         private Core()
         {
-            Halls = new List<Hall>();            
+            Halls = new List<Hall>();
+            Films = new List<FilmData>();
             NameSessions = new List<string>();
             MyPathSettings = @"../../Settings/Settings.txt";
         }

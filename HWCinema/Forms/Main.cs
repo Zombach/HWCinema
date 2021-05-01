@@ -25,6 +25,12 @@ namespace HWCinema.Forms
 
         private void MakeSchedule_Click(object sender, EventArgs e)
         {
+            ScheduleManager scheduleManager = new ScheduleManager();
+            scheduleManager.Show();
+        }
+
+        private void View_Click(object sender, EventArgs e)
+        {
             Schedule schedule = new Schedule();
             schedule.Show();
         }
