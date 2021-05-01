@@ -133,6 +133,15 @@ namespace HWCinema.CoreFolders
             SetTimes(isOpen);
             return _time;
         }
+
+        public int AllTimeWorkInMinutes()
+        {
+            int tmpHour = _hourClose - _hourOpen;
+            int tmpMinutes = _minutesClose - _minutesOpen;
+            int allMinutes = tmpHour * 60 + tmpMinutes;
+            return allMinutes;
+        }
+
         private void SetTimes(bool isOpen)
         {
             if(isOpen)
