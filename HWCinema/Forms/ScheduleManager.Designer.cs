@@ -1,7 +1,7 @@
 ﻿
 namespace HWCinema.Forms
 {
-    partial class Schedule
+    partial class ScheduleManager
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,7 @@ namespace HWCinema.Forms
             this.TimeFilm = new System.Windows.Forms.NumericUpDown();
             this.TimeDefault = new System.Windows.Forms.NumericUpDown();
             this.TextTimeDefault = new System.Windows.Forms.TextBox();
+            this.Create = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FilmsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).BeginInit();
@@ -68,7 +69,7 @@ namespace HWCinema.Forms
             // 
             this.CountFilms.Location = new System.Drawing.Point(74, 71);
             this.CountFilms.Maximum = new decimal(new int[] {
-            1000,
+            840,
             0,
             0,
             0});
@@ -99,11 +100,6 @@ namespace HWCinema.Forms
             this.TimeDefault.Location = new System.Drawing.Point(336, 27);
             this.TimeDefault.Name = "TimeDefault";
             this.TimeDefault.Size = new System.Drawing.Size(56, 20);
-            this.CountFilms.Maximum = new decimal(new int[] {
-            840,
-            0,
-            0,
-            0});
             this.TimeDefault.TabIndex = 5;
             this.TimeDefault.ValueChanged += new System.EventHandler(this.TimeDefault_ValueChanged);
             // 
@@ -116,18 +112,28 @@ namespace HWCinema.Forms
             this.TextTimeDefault.Text = "Длина фильма по умолчанию";
             this.TextTimeDefault.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Schedule
+            // Create
+            // 
+            this.Create.Location = new System.Drawing.Point(464, 278);
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(278, 108);
+            this.Create.TabIndex = 7;
+            this.Create.Text = "Предоставить расписание";
+            this.Create.UseVisualStyleBackColor = true;
+            // 
+            // ScheduleManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Create);
             this.Controls.Add(this.TextTimeDefault);
             this.Controls.Add(this.TimeDefault);
             this.Controls.Add(this.TimeFilm);
             this.Controls.Add(this.TextTimeMinutes);
             this.Controls.Add(this.CountFilms);
             this.Controls.Add(this.NameMovie);
-            this.Name = "Schedule";
+            this.Name = "ScheduleManager";
             this.Text = "Schedule";
             ((System.ComponentModel.ISupportInitialize)(this.FilmsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).EndInit();
@@ -147,5 +153,6 @@ namespace HWCinema.Forms
         private System.Windows.Forms.BindingSource FilmsSource;
         private System.Windows.Forms.NumericUpDown TimeDefault;
         private System.Windows.Forms.TextBox TextTimeDefault;
+        private System.Windows.Forms.Button Create;
     }
 }

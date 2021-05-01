@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HWCinema.Forms
 {
-    public partial class Schedule : Form
+    public partial class ScheduleManager : Form
     {
         private Core _core = Core.GetCore();
         private int _countFilms;
@@ -21,7 +21,7 @@ namespace HWCinema.Forms
         private string _tmpName;
         private bool _isChangeName = false;
         public int DefaultTime { get; set; }
-        public Schedule()
+        public ScheduleManager()
         {
             InitializeComponent();
             FilmsSource.DataSource = _core.Films;
