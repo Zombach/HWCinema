@@ -1,4 +1,4 @@
-﻿using HWСinema.CoreFolders;
+﻿using HWCinema.CoreFolders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,20 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HWСinema.Forms
+namespace HWCinema.Forms
 {
-    public partial class Create : Form
+    public partial class HallsManagement : Form
     {
         private Core _core = Core.GetCore();
         private bool isActiveButton;
-        public Create()
+        public HallsManagement()
         {
             InitializeComponent();
-            CoreSource.DataSource = _core.Halls;
+            HallsSource.DataSource = _core.Halls;
             _core.Halls.Add(new Hall("тест"));
             _core.Halls.Add(new Hall("qdw"));
             _core.Halls.Add(new Hall("ad"));            
-            CoreSource.ResetBindings(true);
+            HallsSource.ResetBindings(true);
         }
 
         private void AddHall_Click(object sender, EventArgs e)
@@ -33,8 +33,8 @@ namespace HWСinema.Forms
                 Hall hall = new Hall(NameNewHall.Text);
                 NameNewHall.Text = "";
                 _core.Halls.Add(hall);
-                CoreSource.ResetBindings(true);
-                Halls.SelectedIndex = CoreSource.Count - 1;
+                HallsSource.ResetBindings(true);
+                Halls.SelectedIndex = HallsSource.Count - 1;
             }
             else
             {
@@ -72,7 +72,7 @@ namespace HWСinema.Forms
             {
                 _core.Halls.Remove(_core.Halls[Halls.SelectedIndex]);
                 Halls.SelectedIndex = 0;
-                CoreSource.ResetBindings(true);
+                HallsSource.ResetBindings(true);
             }
             else
             {

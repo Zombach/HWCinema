@@ -1,4 +1,5 @@
-﻿using HWСinema.CoreFolders;
+﻿using HWCinema.Serelization.Structs;
+using HWCinema.CoreFolders;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,8 +14,9 @@ namespace HWCinema.Serelization.Json
         private Deserialize _deserializer = new Deserialize();
         public StructSettings ReadSettings()
         {
-            StructSettings settings;
-            using (FileStream fileStream = new FileStream(Core.GetCore().MyPathSettings, FileMode.Open, FileAccess.Read, FileShare.None))
+            Core core = Core.GetCore();
+            Settings settings;
+            using (FileStream fileStream = new FileStream(core.MyPathSettings, FileMode.Open, FileAccess.Read, FileShare.None))
             {
                 using (StreamReader streamReader = new StreamReader(fileStream))
                 {
@@ -23,7 +25,7 @@ namespace HWCinema.Serelization.Json
                 }
                 fileStream.Close();
             }
-            return settings;
+            return settings.Struct;
         }
     }
 }

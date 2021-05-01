@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HWCinema.CoreFolders;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HWСinema.Forms
+namespace HWCinema.Forms
 {
     public partial class Schedule : Form
     {
+        private Core _core = Core.GetCore();
         public Schedule()
         {
             InitializeComponent();

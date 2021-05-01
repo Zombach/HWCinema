@@ -1,9 +1,9 @@
 ﻿
-using HWСinema.CoreFolders;
+using HWCinema.CoreFolders;
 
-namespace HWСinema.Forms
+namespace HWCinema.Forms
 {
-    partial class Create
+    partial class HallsManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@ namespace HWСinema.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.Halls = new System.Windows.Forms.ComboBox();
-            this.CoreSource = new System.Windows.Forms.BindingSource(this.components);
+            this.HallsSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddHall = new System.Windows.Forms.Button();
             this.NameNewHall = new System.Windows.Forms.TextBox();
             this.RemoveHall = new System.Windows.Forms.Button();
@@ -45,13 +45,13 @@ namespace HWСinema.Forms
             this.TimeCloseMinutes = new System.Windows.Forms.TextBox();
             this.TimeCloseHours = new System.Windows.Forms.TextBox();
             this.SetTimeWork = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.CoreSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HallsSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Halls
             // 
-            this.Halls.DataBindings.Add(new System.Windows.Forms.Binding("Name", this.CoreSource, "Name", true));
-            this.Halls.DataSource = this.CoreSource;
+            this.Halls.DataBindings.Add(new System.Windows.Forms.Binding("Name", this.HallsSource, "Name", true));
+            this.Halls.DataSource = this.HallsSource;
             this.Halls.DisplayMember = "Name";
             this.Halls.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Halls.Location = new System.Drawing.Point(12, 12);
@@ -60,11 +60,12 @@ namespace HWСinema.Forms
             this.Halls.TabIndex = 0;
             this.Halls.SelectedIndexChanged += new System.EventHandler(this.Halls_SelectedIndexChanged);
             // 
-            // CoreSource
+            // HallsSource
             // 
-            this.CoreSource.AllowNew = false;
-            this.CoreSource.DataMember = "Halls";
-            this.CoreSource.Sort = "";
+            this.HallsSource.AllowNew = true;
+            this.HallsSource.DataMember = "Halls";
+            this.HallsSource.DataSource = typeof(HWCinema.CoreFolders.Core);
+            this.HallsSource.Sort = "";
             // 
             // AddHall
             // 
@@ -168,7 +169,7 @@ namespace HWСinema.Forms
             this.SetTimeWork.UseVisualStyleBackColor = true;
             this.SetTimeWork.Click += new System.EventHandler(this.SetTimeWork_Click);
             // 
-            // Create
+            // HallsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,9 +186,9 @@ namespace HWСinema.Forms
             this.Controls.Add(this.NameNewHall);
             this.Controls.Add(this.AddHall);
             this.Controls.Add(this.Halls);
-            this.Name = "Create";
-            this.Text = "Create";
-            ((System.ComponentModel.ISupportInitialize)(this.CoreSource)).EndInit();
+            this.Name = "HallsManagement";
+            this.Text = "Halls Management";
+            ((System.ComponentModel.ISupportInitialize)(this.HallsSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,7 +199,7 @@ namespace HWСinema.Forms
         private System.Windows.Forms.ComboBox Halls;
         private System.Windows.Forms.Button AddHall;
         private System.Windows.Forms.TextBox NameNewHall;
-        private System.Windows.Forms.BindingSource CoreSource;
+        private System.Windows.Forms.BindingSource HallsSource;
         private System.Windows.Forms.Button RemoveHall;
         private System.Windows.Forms.TextBox TimeOpenHours;
         private System.Windows.Forms.TextBox textBox1;

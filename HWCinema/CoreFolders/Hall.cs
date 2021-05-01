@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HWСinema.CoreFolders
+namespace HWCinema.CoreFolders
 {
     public class Hall
     {
@@ -26,9 +26,9 @@ namespace HWСinema.CoreFolders
             }
             set
             {
-                if (value< 0 || value> 23)
+                if (value < 10 || value> 23)
                 {
-                    _hourOpen = 0;
+                    _hourOpen = 10;
                 }
                 else
                 {
@@ -44,7 +44,7 @@ namespace HWСinema.CoreFolders
             }
             set
             {
-                if (value < 0 || value > 23)
+                if (value < 10 || value > 23)
                 {
                     _hourClose = 0;
                 }
@@ -94,7 +94,7 @@ namespace HWСinema.CoreFolders
         public Hall(string name)
         {
             Name = name;
-            HourOpening = 0;
+            HourOpening = 10;
             HourClosing = 0;
             MinutesOpen = 0;
             MinutesClosing = 0;
@@ -180,6 +180,43 @@ namespace HWСinema.CoreFolders
                 }
             }
         }
-        
+
+        public override bool Equals(object obj)
+        {
+            Hall hall = (Hall)obj;
+            if (this.Name != hall.Name)
+            {
+                return false;
+            }
+            if (this._hourOpen != hall._hourOpen)
+            {
+                return false;
+            }
+            if (this._hourClose != hall._hourClose)
+            {
+                return false;
+            }
+            if (this._minutesOpen != hall._minutesOpen)
+            {
+                return false;
+            }
+            if (this._minutesClose != hall._minutesClose)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -910441382;
+            hashCode = hashCode * -1521134295 + _hourOpen.GetHashCode();
+            hashCode = hashCode * -1521134295 + _minutesOpen.GetHashCode();
+            hashCode = hashCode * -1521134295 + _hourClose.GetHashCode();
+            hashCode = hashCode * -1521134295 + _minutesClose.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            return hashCode;
+        }
     }
 }
