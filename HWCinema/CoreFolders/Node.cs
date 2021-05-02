@@ -11,6 +11,7 @@ namespace HWCinema.CoreFolders
     {
         private Core _core = Core.GetCore();
         public static List<FilmData> Films;
+        public Hall Hall { get; set; }
         public string NameHall { get; set; }
         public int[] FreeTime { get; set; }
         public FilmData Film { get; set; }
@@ -23,8 +24,11 @@ namespace HWCinema.CoreFolders
         /// </summary>
         public List<FilmData> CurrentFilm { get; set; }
 
+
+
         public Node()
         {
+            Hall = null;
             NameHall = null;
             FreeTime = new int[_core.FreeTime.Length];
             Film = null;

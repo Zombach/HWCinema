@@ -25,6 +25,13 @@ namespace HWCinema.CoreFolders
         /// </summary>
         public int RepeatCount { get; set; }
 
+        public FilmData(FilmData film)
+        {
+            Name = film.Name;
+            Time = film.Time;
+            IsPriority = film.IsPriority;
+            RepeatCount = film.RepeatCount;
+        }
         public FilmData(string name, int time, bool isPriority = false)
         {
             Name = name;
