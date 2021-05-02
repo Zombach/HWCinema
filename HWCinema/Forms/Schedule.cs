@@ -21,7 +21,17 @@ namespace HWCinema.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _core.CreateSchedules();
+            Node.Films = new List<FilmData>() { new FilmData("wqe", 99), new FilmData("ddd", 151) };
+            Node qqq = new Node(200);
+            qqq.CreateSchedule(200);
+            qqq.WriteAllEnds();
+            List<List<string>> sss = qqq.Test2();
+            //ScheduleData data = new ScheduleData();
+            //_core.GetFreeTime();
+            ////data.PreparingSchedules();
+            //data.CreateSchedules();
+            //data.WriteSchedule();
+            //data.Message();
         }
     }
 }
