@@ -53,7 +53,6 @@
     <Compile Include="CoreFolders\FilmData.cs" />
     <Compile Include="CoreFolders\Hall.cs" />
     <Compile Include="CoreFolders\Node.cs" />
-    <Compile Include="CoreFolders\ScheduleData.cs" />
     <Compile Include="Forms\HallsManagement.cs">
       <SubType>Form</SubType>
     </Compile>
