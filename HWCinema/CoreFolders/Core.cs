@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HWCinema.Serelization.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +15,25 @@ namespace HWCinema.CoreFolders
         public List <Hall> Halls { get; set; }
 
         public List<FilmData> Films { get; set; }
-        public List<FilmData> currentFilms { get; set; } = new List<FilmData>();
-        public int FreeTime { get; set; }
-
-        public List<ScheduleData> Data { get; set; } = new List<ScheduleData>();
+        public List<FilmData> FilmsTmp { get; set; }
+        public List<FilmData> FilmsVariants { get; set; }
+        public List<FilmData> FilmPriority { get; set; }
+        public List<Node> Nodes { get; set; }
+        public Node Node { get; set; }
+        public Node NodeTmp { get; set; }
+        public int[] FreeTime { get; set; }
 
         public List<string> NameSessions { get; set; }
-        private string _tmptest;
+        public string TmpTest = "";
+
         private Core()
         {
             Halls = new List<Hall>();
             Films = new List<FilmData>();
+            FilmsTmp = new List<FilmData>();
+            FilmPriority = new List<FilmData>();
+            FilmsVariants = new List<FilmData>();
+
             NameSessions = new List<string>();
             MyPathSettings = @"../../Settings/Settings.txt";
         }
@@ -37,48 +46,42 @@ namespace HWCinema.CoreFolders
             }
             return _core;
         }
-        public void CreateSchedules()
+        public void GetFreeTime()
         {
-            foreach (Hall hall in Halls)
+            FreeTime = new int[Halls.Count];
+            for (int i = 0; i < Halls.Count; i++)
             {
-                FreeTime += hall.AllTimeWorkInMinutes();
+                FreeTime[i] = Halls[i].FreeTime;
+            }
+        }
+        public void CreateSchedule()
+        {
+            for (int i = 0; i < Halls.Count; i++)
+            {
+                Node = new Node(0);
+                CreateGraph(Halls[i]);
+            }
+        }
+
+        public void CreateGraph(Hall hall)
+        {
+            foreach (FilmData film in Films)
+            {
+                if(film.Time <= hall.FreeTime)
+                {
+                    //FilmsVariants = new List<FilmData>();
+                    //foreach (FilmData filmCurrent in Films)
+                    //{
+                    //    FilmsVariants.Add(filmCurrent);
+                    //}
+                    hall.FreeTime = film.Time;
+                    NodeTmp = new Node(hall, film, _core);
+                    Node.Nodes.Add(NodeTmp);
+                    Node.NextNode(hall);
+                }
             }
         }
 
         
-        public void CreateScheduleData()
-        {
-            //    bool end = true;
-            //    foreach (FilmData film in Films)
-            //    {
-            //        //int timeTmp = Halls[0].AllTimeWorkInMinutes();
-            //        if (_tmpInt < film.Time)
-            //        {
-            //            continue;
-            //        }
-            //        else
-            //        {
-            //            int tmptmp = _tmpInt;
-            //            foreach (FilmData filmdata in Films)
-            //            {
-            //                tmptmp -= filmdata.Time;
-            //                if (filmdata.Time < _tmpInt)
-            //                {
-            //                    currentFilms.Add(filmdata);
-            //                }
-            //            }
-            //        }                
-            //    }
-
-            //    if (end)
-            //    {
-            //        foreach (FilmData filmdata in currentFilms)
-            //        {
-            //            _tmptest +=(filmdata.Name + " ");
-            //        }
-            //        MessageBox.Show(_tmptest);
-            //        _tmptest = "";
-            //    }
-        }
     }
 }

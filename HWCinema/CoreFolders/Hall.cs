@@ -11,13 +11,92 @@ namespace HWCinema.CoreFolders
         private string _time;
         private string _zeroChar_H = "";
         private string _zeroChar_M = "";
+        private string _name;
         private int _hourOpen;
         private int _minutesOpen;
         private int _hourClose;
         private int _minutesClose;
+        private int _timeWorkInMinutes;
+        private int _freeTime;
+        private FilmData _film;
+        private List<FilmData> _films;
 
+        public bool RemoveFilms
+        {
+            private get
+            {
+                return true;
+            }
+            set
+            {
+                _films.Clear();
+                _freeTime = _timeWorkInMinutes;
+            }
+        }
+        public bool RemoveLastFilm
+        {
+            private get
+            {
+                return true;
+            }
+            set
+            {
+                if (_films.Count != 0)
+                {
+                    FilmData LastFilm = _films[_films.Count - 1];
+                    _freeTime = -LastFilm.Time;
+                    _films.Remove(LastFilm);
+                }
+            }
+        }
+        public int FreeTime
+        {
+            get
+            {
+                return _freeTime;
+            }
+            set
+            {
+                _freeTime -= value;
+            }
+        }
+        public List<FilmData> GetFilms
+        {
+            get
+            {
+                return _films;
+            }
+            private set
+            {
+                _films.Add(_film);
+            }
+        }
+        public FilmData SetFilm
+        {
+            private get
+            {
+                return _film;
+            }
+            set
+            {
 
-        public string Name { get; set; }
+                GetFilms.Add(new FilmData(value));
+            }
+        }
+
+        
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
         public int HourOpening
         {
             get
@@ -26,7 +105,7 @@ namespace HWCinema.CoreFolders
             }
             set
             {
-                if (value < 10 || value> 23)
+                if (value < 10 || value > 23)
                 {
                     _hourOpen = 10;
                 }
@@ -91,17 +170,47 @@ namespace HWCinema.CoreFolders
             }
         }
 
+        public int AllTimeWorkInMinutes
+        {
+            get
+            {
+                int tmpHour = _hourClose - _hourOpen;
+                int tmpMinutes = _minutesClose - _minutesOpen;
+                _timeWorkInMinutes = tmpHour * 60 + tmpMinutes;
+                return _timeWorkInMinutes;
+            }
+            private set
+            {
+                
+            }
+        }
+
+        public Hall(Hall hall)
+        {
+            _name = hall.Name;
+            _hourOpen = hall.HourOpening;
+            _hourClose = hall.HourClosing;
+            _minutesOpen = hall.MinutesOpen;
+            _minutesClose = hall.MinutesClosing;
+            _timeWorkInMinutes = hall.AllTimeWorkInMinutes;
+            _freeTime = _timeWorkInMinutes;
+            _film = hall._film;
+        }
+
         public Hall(string name)
         {
-            Name = name;
-            HourOpening = 10;
-            HourClosing = 0;
-            MinutesOpen = 0;
-            MinutesClosing = 0;
+            _name = name;
+            _hourOpen = 10;
+            _hourClose = 23;
+            _minutesOpen = 00;
+            _minutesClose = 59;
+            _timeWorkInMinutes = AllTimeWorkInMinutes;
+            _freeTime = _timeWorkInMinutes;
+            _films = new List<FilmData>();
         }
 
         public void SetTimeOpening(string hour, string minutes)
-        {            
+        {
             HourOpening = Convert.ToInt32(hour);
             MinutesOpen = Convert.ToInt32(minutes);
         }
@@ -134,13 +243,7 @@ namespace HWCinema.CoreFolders
             return _time;
         }
 
-        public int AllTimeWorkInMinutes()
-        {
-            int tmpHour = _hourClose - _hourOpen;
-            int tmpMinutes = _minutesClose - _minutesOpen;
-            int allMinutes = tmpHour * 60 + tmpMinutes;
-            return allMinutes;
-        }
+        
 
         private void SetTimes(bool isOpen)
         {
