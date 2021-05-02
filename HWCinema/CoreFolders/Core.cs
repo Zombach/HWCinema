@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HWCinema.Serelization.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,11 @@ namespace HWCinema.CoreFolders
 
         public List<FilmData> Films { get; set; }
         public List<FilmData> FilmsTmp { get; set; }
-        public List<FilmData> FilmsCurrent { get; set; }
+        public List<FilmData> FilmsVariants { get; set; }
         public List<FilmData> FilmPriority { get; set; }
-        public List<Node> Node { get; set; }
+        public List<Node> Nodes { get; set; }
+        public Node Node { get; set; }
+        public Node NodeTmp { get; set; }
         public int[] FreeTime { get; set; }
 
         public List<string> NameSessions { get; set; }
@@ -29,8 +32,7 @@ namespace HWCinema.CoreFolders
             Films = new List<FilmData>();
             FilmsTmp = new List<FilmData>();
             FilmPriority = new List<FilmData>();
-            FilmsCurrent = new List<FilmData>();
-            Node = new List<Node>();
+            FilmsVariants = new List<FilmData>();
 
             NameSessions = new List<string>();
             MyPathSettings = @"../../Settings/Settings.txt";
@@ -49,20 +51,35 @@ namespace HWCinema.CoreFolders
             FreeTime = new int[Halls.Count];
             for (int i = 0; i < Halls.Count; i++)
             {
-                FreeTime[i] = Halls[i].AllTimeWorkInMinutes;
+                FreeTime[i] = Halls[i].FreeTime;
             }
         }
         public void CreateSchedule()
         {
             for (int i = 0; i < Halls.Count; i++)
             {
-                CreateGraph(FreeTime[i]);
+                Node = new Node(0);
+                CreateGraph(Halls[i]);
             }
         }
 
-        public void CreateGraph(int t)
+        public void CreateGraph(Hall hall)
         {
-
+            foreach (FilmData film in Films)
+            {
+                if(film.Time <= hall.FreeTime)
+                {
+                    //FilmsVariants = new List<FilmData>();
+                    //foreach (FilmData filmCurrent in Films)
+                    //{
+                    //    FilmsVariants.Add(filmCurrent);
+                    //}
+                    hall.FreeTime = film.Time;
+                    NodeTmp = new Node(hall, film, _core);
+                    Node.Nodes.Add(NodeTmp);
+                    Node.NextNode(hall);
+                }
+            }
         }
 
         

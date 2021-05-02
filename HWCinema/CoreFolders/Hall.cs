@@ -174,13 +174,14 @@ namespace HWCinema.CoreFolders
         {
             get
             {
+                int tmpHour = _hourClose - _hourOpen;
+                int tmpMinutes = _minutesClose - _minutesOpen;
+                _timeWorkInMinutes = tmpHour * 60 + tmpMinutes;
                 return _timeWorkInMinutes;
             }
             private set
             {
-                int tmpHour = _hourClose - _hourOpen;
-                int tmpMinutes = _minutesClose - _minutesOpen;
-                _timeWorkInMinutes = tmpHour * 60 + tmpMinutes;
+                
             }
         }
 

@@ -24,6 +24,7 @@ namespace HWCinema.CoreFolders
         /// Колличество повторов
         /// </summary>
         public int RepeatCount { get; set; }
+        public bool RepeatOtherHalls { get; set; }
 
         public FilmData(FilmData film)
         {
@@ -31,13 +32,15 @@ namespace HWCinema.CoreFolders
             Time = film.Time;
             IsPriority = film.IsPriority;
             RepeatCount = film.RepeatCount;
-        }
+            RepeatOtherHalls = film.RepeatOtherHalls;
+    }
         public FilmData(string name, int time, bool isPriority = false)
         {
             Name = name;
             Time = time;
             IsPriority = isPriority;
             RepeatCount = 0;
+            RepeatOtherHalls = false;
         }
     }
 }
