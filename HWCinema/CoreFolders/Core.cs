@@ -15,11 +15,10 @@ namespace HWCinema.CoreFolders
 
         public List<FilmData> Films { get; set; }
         public List<FilmData> FilmsTmp { get; set; }
-        public List<FilmData> FilmsCurrent { get; set; } = new List<FilmData>();
+        public List<FilmData> FilmsCurrent { get; set; }
         public List<FilmData> FilmPriority { get; set; }
+        public List<Node> Node { get; set; }
         public int[] FreeTime { get; set; }
-
-        public List<ScheduleData> Data { get; set; } = new List<ScheduleData>();
 
         public List<string> NameSessions { get; set; }
         public string TmpTest = "";
@@ -28,6 +27,11 @@ namespace HWCinema.CoreFolders
         {
             Halls = new List<Hall>();
             Films = new List<FilmData>();
+            FilmsTmp = new List<FilmData>();
+            FilmPriority = new List<FilmData>();
+            FilmsCurrent = new List<FilmData>();
+            Node = new List<Node>();
+
             NameSessions = new List<string>();
             MyPathSettings = @"../../Settings/Settings.txt";
         }
@@ -45,8 +49,22 @@ namespace HWCinema.CoreFolders
             FreeTime = new int[Halls.Count];
             for (int i = 0; i < Halls.Count; i++)
             {
-                FreeTime[i] = Halls[i].AllTimeWorkInMinutes();
+                FreeTime[i] = Halls[i].AllTimeWorkInMinutes;
             }
         }
+        public void CreateSchedule()
+        {
+            for (int i = 0; i < Halls.Count; i++)
+            {
+                CreateGraph(FreeTime[i]);
+            }
+        }
+
+        public void CreateGraph(int t)
+        {
+
+        }
+
+        
     }
 }
