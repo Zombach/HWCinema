@@ -18,25 +18,64 @@ namespace HWCinema.Forms
         public Schedule(Form menu)
         {
             InitializeComponent();
+            ClearLists();
+            OpenFormControls();
+
+            //MethodTest();
+            _menu = menu;
+        }
+
+        private void OpenFormControls()
+        {
+            FormScheduleManager();
+            FormHallsManagement();
+        }
+
+        private void FormScheduleManager()
+        {
             ScheduleManager scheduleManager = new ScheduleManager();
             scheduleManager.Show();
+        }
+
+        private void FormHallsManagement()
+        {
             HallsManagement create = new HallsManagement();
             create.Show();
-            //MethodTest();
+        }
+
+        private void ClearLists()
+        {
+            _core.Halls.Clear();
+            _core.Films.Clear();
+        }
+
+        private void MethodTest()
+        {
+            FilmData film = new FilmData("Film 1", 330);
+            FilmData film2 = new FilmData("Film 2", 430);
+            _core.Films.Add(film);
+            _core.Films.Add(film2);
+            Hall hall = new Hall("Hall 1");
+            _core.Halls.Add(hall);
+        }
+
+
+        private void ScheduleView_Click(object sender, EventArgs e)
+        {
             _core.CreateSchedule();
             for (int i = 0; i < _core.Halls.Count; i++)
             {
                 Hall halls = _core.Halls[i];
                 string eee = "";
                 string tmp = $"Зал №{i + 1} - {halls.Name}, время работы зала: {halls.GetTimeWorking()}";
-                listBox1.Items.Add(eee);
-                listBox1.Items.Add(tmp);
+                ListBox.Items.Add(eee);
+                ListBox.Items.Add(tmp);
                 for (int j = 0; j < halls.GetScheduleFilms.Count; j++)
                 {
-                    string tmp3 = $"Вариант расписания {j+1}";
+                    string tmp3 = $"Вариант расписания {j + 1}";
                     string qwe = "";
-                    listBox1.Items.Add(qwe);
-                    listBox1.Items.Add(tmp3);
+                    ListBox.Items.Add(qwe);
+                    ListBox.Items.Add(tmp3);
                     int time = halls.GetTimeOpenInMinutes();
                     string timeStart;
                     string timeEnd;
@@ -53,37 +92,21 @@ namespace HWCinema.Forms
                         {
                             fix2 = "0";
                         }
-                        timeStart = time/60 + ":" + fix + time % 60;
-                        timeEnd = (time + films[k].Time)/ 60 + ":" + fix2 +(time + films[k].Time) % 60;
+                        timeStart = time / 60 + ":" + fix + time % 60;
+                        timeEnd = (time + films[k].Time) / 60 + ":" + fix2 + (time + films[k].Time) % 60;
                         string fix3 = "";
                         if (films[k].Time % 60 < 10)
                         {
                             fix3 = "0";
                         }
-                        string tmp2 = $"{timeStart} - {timeEnd} Фильм: {films[k].Name}, продолжительность фильма: {films[k].Time/60}:{fix3}{films[k].Time % 60}";
-                        listBox1.Items.Add(tmp2);
+                        string tmp2 = $"{timeStart} - {timeEnd} Фильм: {films[k].Name}, продолжительность фильма: {films[k].Time / 60}:{fix3}{films[k].Time % 60}";
+                        ListBox.Items.Add(tmp2);
                         time += films[k].Time;
                     }
-                     
+
                 }
-                  
+
             }
-            _menu = menu;
-        }
-
-        private void MethodTest()
-        {
-            FilmData film = new FilmData("Film 1", 330);
-            FilmData film2 = new FilmData("Film 2", 430);
-            _core.Films.Add(film);
-            _core.Films.Add(film2);
-            Hall hall = new Hall("Hall 1");
-            _core.Halls.Add(hall);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void Schedule_FormClosing(object sender, FormClosingEventArgs e)

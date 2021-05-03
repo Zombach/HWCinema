@@ -29,27 +29,27 @@ namespace HWCinema.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ScheduleView = new System.Windows.Forms.Button();
+            this.ListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // button1
+            // ScheduleView
             // 
-            this.button1.Location = new System.Drawing.Point(1578, 982);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 26);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Другой вариант";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ScheduleView.Location = new System.Drawing.Point(1578, 982);
+            this.ScheduleView.Name = "ScheduleView";
+            this.ScheduleView.Size = new System.Drawing.Size(144, 26);
+            this.ScheduleView.TabIndex = 1;
+            this.ScheduleView.Text = "Другой вариант";
+            this.ScheduleView.UseVisualStyleBackColor = true;
+            this.ScheduleView.Click += new System.EventHandler(this.ScheduleView_Click);
             // 
-            // listBox1
+            // ListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(10, 10);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(1419, 1005);
-            this.listBox1.TabIndex = 2;
+            this.ListBox.FormattingEnabled = true;
+            this.ListBox.Location = new System.Drawing.Point(10, 10);
+            this.ListBox.Name = "ListBox";
+            this.ListBox.Size = new System.Drawing.Size(1419, 1005);
+            this.ListBox.TabIndex = 2;
             // 
             // Schedule
             // 
@@ -57,14 +57,14 @@ namespace HWCinema.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1904, 1021);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ListBox);
+            this.Controls.Add(this.ScheduleView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Schedule_FormClosing);
             this.Name = "Schedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Schedule";
+            this.Text = "Movie Schedule";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Schedule_FormClosing);
             this.ResumeLayout(false);
 
         }
@@ -72,7 +72,7 @@ namespace HWCinema.Forms
         
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button ScheduleView;
+        private System.Windows.Forms.ListBox ListBox;
     }
 }
