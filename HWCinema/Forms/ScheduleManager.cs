@@ -26,7 +26,7 @@ namespace HWCinema.Forms
             InitializeComponent();
             FilmsSource.DataSource = _core.Films;
             _countFilms = 0;
-            DefaultTime = 0;
+            DefaultTime = 60;
         }
 
         private void CountFilms_ValueChanged(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace HWCinema.Forms
             {
                 if (NameMovie.SelectedIndex != -1)
                 {
-                    _tmpData = (FilmData)NameMovie.Items[NameMovie.SelectedIndex];
+                    _tmpData = _core.Films[NameMovie.SelectedIndex];
                     TimeFilm.Value = _tmpData.Time;
                     _index = NameMovie.SelectedIndex;
                 }
@@ -91,11 +91,6 @@ namespace HWCinema.Forms
                 ChangeNameMovies();
                 _isChangeName = false;
             }
-        }
-
-        private void TimeDefault_ValueChanged(object sender, EventArgs e)
-        {
-            DefaultTime = (int)TimeDefault.Value;
         }
     }
 }

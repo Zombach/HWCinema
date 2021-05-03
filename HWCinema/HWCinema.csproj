@@ -83,7 +83,6 @@
     <Compile Include="Serelization\Json\SaveSettings.cs" />
     <Compile Include="Serelization\Json\Serialize.cs" />
     <Compile Include="Serelization\Json\Settings.cs" />
-    <Compile Include="Serelization\Structs\Node.cs" />
     <Compile Include="Serelization\Structs\StructSettings.cs" />
     <EmbeddedResource Include="Forms\HallsManagement.resx">
       <DependentUpon>HallsManagement.cs</DependentUpon>

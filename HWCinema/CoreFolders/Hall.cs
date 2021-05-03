@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HWCinema.Serelization.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,6 @@ namespace HWCinema.CoreFolders
         private int _minutesClose;
         private int _timeWorkInMinutes;
         private int _freeTime;
-        private FilmData _film;
         private List<FilmData> _films;
 
         public bool RemoveFilms
@@ -64,22 +64,24 @@ namespace HWCinema.CoreFolders
         {
             get
             {
+                if (_films == null)
+                {
+                    _films = new List<FilmData>();
+                }
                 return _films;
             }
             private set
             {
-                _films.Add(_film);
             }
         }
         public FilmData SetFilm
         {
             private get
             {
-                return _film;
+                return new FilmData("Тест", 90);
             }
             set
             {
-
                 GetFilms.Add(new FilmData(value));
             }
         }
@@ -180,12 +182,11 @@ namespace HWCinema.CoreFolders
                 return _timeWorkInMinutes;
             }
             private set
-            {
-                
+            {                
             }
         }
 
-        public Hall(Hall hall)
+        public Hall(Hall hall, int time, List<FilmData> films)
         {
             _name = hall.Name;
             _hourOpen = hall.HourOpening;
@@ -193,8 +194,9 @@ namespace HWCinema.CoreFolders
             _minutesOpen = hall.MinutesOpen;
             _minutesClose = hall.MinutesClosing;
             _timeWorkInMinutes = hall.AllTimeWorkInMinutes;
-            _freeTime = _timeWorkInMinutes;
-            _film = hall._film;
+            _freeTime = hall.FreeTime - time;
+            _films = new List<FilmData>();
+            _films = films;
         }
 
         public Hall(string name)
