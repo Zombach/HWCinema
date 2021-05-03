@@ -17,22 +17,30 @@ namespace HWCinema.Forms
             InitializeComponent();
         }
 
-        private void Create_Click(object sender, EventArgs e)
+       
+
+        private void CreateSchedule_Click(object sender, EventArgs e)
         {
             HallsManagement create = new HallsManagement(this);
             create.Show();
-        }
-
-        private void MakeSchedule_Click(object sender, EventArgs e)
-        {
-            ScheduleManager scheduleManager = new ScheduleManager();
+            Schedule schedule = new Schedule(this);
+            schedule.Show();
+            ScheduleManager scheduleManager = new ScheduleManager(this);
             scheduleManager.Show();
         }
 
-        private void View_Click(object sender, EventArgs e)
+        private void Saving_Click(object sender, EventArgs e)
         {
-            Schedule schedule = new Schedule();
-            schedule.Show();
+
+        }
+
+        private void Loading_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }
