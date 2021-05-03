@@ -43,7 +43,7 @@ namespace HWCinema.CoreFolders
                 if(film.Time <= tmpData.Times)
                 {
                     FilmTmp.Clear();
-                    if (tmpData.FilmDatas != null)
+                    if (tmpData.Films != null)
                     {
                         FilmsCopy(tmpData);
                     }
@@ -56,7 +56,7 @@ namespace HWCinema.CoreFolders
         }
         private void FilmsCopy(TmpData tmpData)
         {
-            foreach (FilmData films in tmpData.FilmDatas)
+            foreach (FilmData films in tmpData.Films)
             {
                 FilmTmp.Add(films);
             }
@@ -83,8 +83,8 @@ namespace HWCinema.CoreFolders
         }
         private void Write(Hall hall, TmpData tmpData)
         {
-            hall.SetFilms = tmpData.FilmDatas;
-            tmpData.FilmDatas.Clear();
+            hall.SetFilms = tmpData.Films;
+            tmpData.Films.Clear();
             hall.AllFreeTime.Add(tmpData.Times);
         }        
     }
