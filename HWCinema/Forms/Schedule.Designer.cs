@@ -35,7 +35,7 @@ namespace HWCinema.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(644, 412);
+            this.button1.Location = new System.Drawing.Point(1578, 982);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 26);
             this.button1.TabIndex = 1;
@@ -46,20 +46,24 @@ namespace HWCinema.Forms
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
+            this.listBox1.Location = new System.Drawing.Point(10, 10);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(776, 394);
+            this.listBox1.Size = new System.Drawing.Size(1419, 1005);
             this.listBox1.TabIndex = 2;
             // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1904, 1021);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Schedule";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Schedule";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

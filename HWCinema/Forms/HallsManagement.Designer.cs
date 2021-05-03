@@ -183,6 +183,7 @@ namespace HWCinema.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Pink;
             this.ClientSize = new System.Drawing.Size(356, 198);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.SetTimeWork);
@@ -197,12 +198,15 @@ namespace HWCinema.Forms
             this.Controls.Add(this.NameNewHall);
             this.Controls.Add(this.AddHall);
             this.Controls.Add(this.Halls);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Location = new System.Drawing.Point(1490, 100);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(372, 237);
             this.MinimumSize = new System.Drawing.Size(372, 237);
             this.Name = "HallsManagement";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Halls Management";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.HallsSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
