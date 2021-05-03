@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HWCinema.Serelization.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,141 @@ namespace HWCinema.CoreFolders
         private string _time;
         private string _zeroChar_H = "";
         private string _zeroChar_M = "";
+        private string _name;
         private int _hourOpen;
         private int _minutesOpen;
         private int _hourClose;
         private int _minutesClose;
+        private int _timeWorkInMinutes;
+        private List<int> _freeTime;
+        private List<List<FilmData>> _scheduleFilms;
+        private List<FilmData> _films;
+
+        public bool RemoveFilms
+        {
+            private get
+            {
+                return true;
+            }
+            set
+            {
+                _films.Clear();
+                _freeTime.Clear();
+                _freeTime.Add(_timeWorkInMinutes);
+            }
+        }
+        public bool RemoveLastFilm
+        {
+            private get
+            {
+                return true;
+            }
+            set
+            {
+                if (_films.Count != 0)
+                {
+                    _freeTime.RemoveAt(_freeTime.Count - 1);
+                    _films.RemoveAt(_films.Count -1);
+                }
+            }
+        }
+        public List<int> AllFreeTime
+        {
+            get
+            {
+                return _freeTime;
+            }
+            set
+            {
+                _freeTime.Clear();
+                _freeTime.AddRange(value);
+            }
+        }
+
+        public int FreeTime
+        {
+            get
+            {
+                return _freeTime[_freeTime.Count -1];
+            }
+            set
+            {
+                _freeTime[_freeTime.Count - 1] -= value;
+            }
+        }
+
+        public List<List<FilmData>> GetScheduleFilms
+        {
+            get
+            {
+                if (_scheduleFilms == null)
+                {
+                    _scheduleFilms = new List<List<FilmData>>();
+                }
+                return _scheduleFilms;
+            }
+            private set
+            {
+            }
+        }
+        public List<FilmData> GetFilms
+        {
+            get
+            {
+                if (_films == null)
+                {
+                    _films = new List<FilmData>();
+                }
+
+                if (_scheduleFilms.Count != 0)
+                {
+                    _films = _scheduleFilms[_scheduleFilms.Count - 1];
+                }
+                return _films;
+            }
+            private set
+            {
+
+            }
+        }
+        public List<List<FilmData>> SetScheduleFilms
+        {
+            get
+            {
+                return new List<List<FilmData>>();
+            }
+            set
+            {
+                _scheduleFilms = value;
+            }
+        }
+        public List<FilmData> SetFilms
+        {
+            get
+            {
+                return _scheduleFilms[_scheduleFilms.Count - 1];
+            }
+            set
+            {
+                _films = new List<FilmData>();
+                _films.AddRange(value);
+                _scheduleFilms.Add(_films);
+            }
+        }
 
 
-        public string Name { get; set; }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
         public int HourOpening
         {
             get
@@ -26,7 +155,7 @@ namespace HWCinema.CoreFolders
             }
             set
             {
-                if (value < 10 || value> 23)
+                if (value < 10 || value > 23)
                 {
                     _hourOpen = 10;
                 }
@@ -46,7 +175,7 @@ namespace HWCinema.CoreFolders
             {
                 if (value < 10 || value > 23)
                 {
-                    _hourClose = 0;
+                    _hourClose = 23;
                 }
                 else
                 {
@@ -82,7 +211,7 @@ namespace HWCinema.CoreFolders
             {
                 if (value < 0 || value > 59)
                 {
-                    _minutesClose = 0;
+                    _minutesClose = 59;
                 }
                 else
                 {
@@ -91,17 +220,36 @@ namespace HWCinema.CoreFolders
             }
         }
 
+        public int AllTimeWorkInMinutes
+        {
+            get
+            {
+                int tmpHour = _hourClose - _hourOpen;
+                int tmpMinutes = _minutesClose - _minutesOpen;
+                _timeWorkInMinutes = tmpHour * 60 + tmpMinutes;
+                return _timeWorkInMinutes;
+            }
+            private set
+            {                
+            }
+        }
+
+
         public Hall(string name)
         {
-            Name = name;
-            HourOpening = 10;
-            HourClosing = 0;
-            MinutesOpen = 0;
-            MinutesClosing = 0;
+            _name = name;
+            _hourOpen = 10;
+            _hourClose = 23;
+            _minutesOpen = 00;
+            _minutesClose = 59;
+            _timeWorkInMinutes = AllTimeWorkInMinutes;
+            _freeTime = new List<int>();
+            _films = new List<FilmData>();
+            _scheduleFilms = new List<List<FilmData>>();
         }
 
         public void SetTimeOpening(string hour, string minutes)
-        {            
+        {
             HourOpening = Convert.ToInt32(hour);
             MinutesOpen = Convert.ToInt32(minutes);
         }
@@ -133,6 +281,18 @@ namespace HWCinema.CoreFolders
             SetTimes(isOpen);
             return _time;
         }
+
+        public int GetTimeOpenInMinutes()
+        {
+            int tmp = _hourOpen * 60 + _minutesOpen;
+            return tmp;
+        }
+        public int GetTimeCloseInMinutes()
+        {
+            int tmp = _hourOpen * 60 + _minutesOpen;
+            return tmp;
+        }
+
         private void SetTimes(bool isOpen)
         {
             if(isOpen)
