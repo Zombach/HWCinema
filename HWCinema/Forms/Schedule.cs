@@ -44,19 +44,19 @@ namespace HWCinema.Forms
                     for (int k = 0; k < films.Count; k++)
                     {
                         string fix = "";
-                        if (time % 60 == 0)
+                        if (time % 60 < 10)
                         {
                             fix = "0";
                         }
                         string fix2 = "";
-                        if ((time + films[k].Time) % 60 == 0)
+                        if ((time + films[k].Time) % 60 < 10)
                         {
                             fix2 = "0";
                         }
                         timeStart = time/60 + ":" + fix + time % 60;
                         timeEnd = (time + films[k].Time)/ 60 + ":" + fix2 +(time + films[k].Time) % 60;
                         string fix3 = "";
-                        if (films[k].Time % 60 == 0)
+                        if (films[k].Time % 60 < 10)
                         {
                             fix3 = "0";
                         }
