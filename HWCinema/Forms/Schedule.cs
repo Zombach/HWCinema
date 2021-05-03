@@ -14,15 +14,11 @@ namespace HWCinema.Forms
     public partial class Schedule : Form
     {
         private Core _core = Core.GetCore();
-        public Schedule()
+        private Form _menu;
+        public Schedule(Form menu)
         {
             InitializeComponent();
-            //FilmData film = new FilmData("Film 1", 330);
-            //FilmData film2 = new FilmData("Film 2", 430);
-            //_core.Films.Add(film);
-            //_core.Films.Add(film2);
-            //Hall hall = new Hall("Hall 1");
-            //_core.Halls.Add(hall);
+            //MethodTest();
             _core.CreateSchedule();
             for (int i = 0; i < _core.Halls.Count; i++)
             {
@@ -68,6 +64,17 @@ namespace HWCinema.Forms
                 }
                   
             }
+            _menu = menu;
+        }
+
+        private void MethodTest()
+        {
+            FilmData film = new FilmData("Film 1", 330);
+            FilmData film2 = new FilmData("Film 2", 430);
+            _core.Films.Add(film);
+            _core.Films.Add(film2);
+            Hall hall = new Hall("Hall 1");
+            _core.Halls.Add(hall);
         }
 
         private void button1_Click(object sender, EventArgs e)
