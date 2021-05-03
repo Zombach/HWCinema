@@ -203,6 +203,7 @@ namespace HWCinema.Forms
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(372, 237);
             this.MinimumSize = new System.Drawing.Size(372, 237);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HallsManagement_FormClosing);
             this.Name = "HallsManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Halls Management";

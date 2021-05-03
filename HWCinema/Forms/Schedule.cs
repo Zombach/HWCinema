@@ -18,6 +18,10 @@ namespace HWCinema.Forms
         public Schedule(Form menu)
         {
             InitializeComponent();
+            ScheduleManager scheduleManager = new ScheduleManager();
+            scheduleManager.Show();
+            HallsManagement create = new HallsManagement();
+            create.Show();
             //MethodTest();
             _core.CreateSchedule();
             for (int i = 0; i < _core.Halls.Count; i++)
@@ -80,6 +84,11 @@ namespace HWCinema.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void Schedule_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

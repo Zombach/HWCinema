@@ -14,7 +14,6 @@ namespace HWCinema.Forms
     public partial class ScheduleManager : Form
     {
         private Core _core = Core.GetCore();
-        private Form _menu;
         private int _countFilms;
         private int indexName = 1;
         private int _index;
@@ -22,13 +21,12 @@ namespace HWCinema.Forms
         private string _tmpName;
         private bool _isChangeName = false;
         public int DefaultTime { get; set; }
-        public ScheduleManager(Form menu)
+        public ScheduleManager()
         {
             InitializeComponent();
             FilmsSource.DataSource = _core.Films;
             _countFilms = 0;
             DefaultTime = 60;
-            _menu = menu;
         }
 
         private void CountFilms_ValueChanged(object sender, EventArgs e)
@@ -93,6 +91,10 @@ namespace HWCinema.Forms
                 ChangeNameMovies();
                 _isChangeName = false;
             }
+        }
+        private void ScheduleManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

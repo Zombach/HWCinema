@@ -1,4 +1,7 @@
 ﻿
+using System;
+using System.Windows.Forms;
+
 namespace HWCinema.Forms
 {
     partial class ScheduleManager
@@ -154,6 +157,7 @@ namespace HWCinema.Forms
             this.Location = new System.Drawing.Point(1440, 800);
             this.MaximumSize = new System.Drawing.Size(468, 173);
             this.MinimumSize = new System.Drawing.Size(468, 173);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScheduleManager_FormClosing);
             this.Name = "ScheduleManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Schedule Manager";
@@ -163,7 +167,6 @@ namespace HWCinema.Forms
             ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

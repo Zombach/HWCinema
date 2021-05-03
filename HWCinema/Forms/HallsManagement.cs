@@ -14,16 +14,13 @@ namespace HWCinema.Forms
     public partial class HallsManagement : Form
     {
         private Core _core = Core.GetCore();
-        private Form _menu;
         private bool isActiveButton;
-        public HallsManagement(Form menu)
+        public HallsManagement()
         {
             InitializeComponent();
-            _menu = menu;
             Enable(false);
             HallsSource.DataSource = _core.Halls;           
             HallsSource.ResetBindings(true);
-            _menu = menu;
         }
 
         private void Enable(bool isOn)
@@ -160,6 +157,11 @@ namespace HWCinema.Forms
         {
             _core.Halls[Halls.SelectedIndex].SetTimeOpening(TimeOpenHours.Text, TimeOpenMinutes.Text);
             _core.Halls[Halls.SelectedIndex].SetTimeClosing(TimeCloseHours.Text, TimeCloseMinutes.Text);
+        }
+
+        private void HallsManagement_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

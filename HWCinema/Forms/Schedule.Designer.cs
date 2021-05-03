@@ -60,6 +60,7 @@ namespace HWCinema.Forms
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Schedule_FormClosing);
             this.Name = "Schedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Schedule";
@@ -67,6 +68,8 @@ namespace HWCinema.Forms
             this.ResumeLayout(false);
 
         }
+
+        
 
         #endregion
         private System.Windows.Forms.Button button1;
