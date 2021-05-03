@@ -38,9 +38,10 @@ namespace HWCinema.Forms
             this.CountFilms = new System.Windows.Forms.NumericUpDown();
             this.TextTimeMinutes = new System.Windows.Forms.TextBox();
             this.TimeFilm = new System.Windows.Forms.NumericUpDown();
-            this.SaveSchedule = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.FilmsSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).BeginInit();
@@ -52,7 +53,7 @@ namespace HWCinema.Forms
             this.NameMovie.DataSource = this.FilmsSource;
             this.NameMovie.DisplayMember = "Name";
             this.NameMovie.FormattingEnabled = true;
-            this.NameMovie.Location = new System.Drawing.Point(83, 38);
+            this.NameMovie.Location = new System.Drawing.Point(9, 38);
             this.NameMovie.Name = "NameMovie";
             this.NameMovie.Size = new System.Drawing.Size(286, 21);
             this.NameMovie.TabIndex = 0;
@@ -69,29 +70,30 @@ namespace HWCinema.Forms
             // 
             // CountFilms
             // 
-            this.CountFilms.Location = new System.Drawing.Point(12, 38);
+            this.CountFilms.Location = new System.Drawing.Point(9, 77);
             this.CountFilms.Maximum = new decimal(new int[] {
             840,
             0,
             0,
             0});
             this.CountFilms.Name = "CountFilms";
-            this.CountFilms.Size = new System.Drawing.Size(56, 20);
+            this.CountFilms.Size = new System.Drawing.Size(86, 20);
             this.CountFilms.TabIndex = 1;
+            this.CountFilms.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CountFilms.ValueChanged += new System.EventHandler(this.CountFilms_ValueChanged);
             // 
             // TextTimeMinutes
             // 
-            this.TextTimeMinutes.Location = new System.Drawing.Point(375, 12);
+            this.TextTimeMinutes.Location = new System.Drawing.Point(106, 101);
             this.TextTimeMinutes.Name = "TextTimeMinutes";
-            this.TextTimeMinutes.Size = new System.Drawing.Size(66, 20);
+            this.TextTimeMinutes.Size = new System.Drawing.Size(88, 20);
             this.TextTimeMinutes.TabIndex = 3;
-            this.TextTimeMinutes.Text = "Минут";
+            this.TextTimeMinutes.Text = "Длительность";
             this.TextTimeMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TimeFilm
             // 
-            this.TimeFilm.Location = new System.Drawing.Point(375, 38);
+            this.TimeFilm.Location = new System.Drawing.Point(9, 102);
             this.TimeFilm.Maximum = new decimal(new int[] {
             600,
             0,
@@ -103,7 +105,7 @@ namespace HWCinema.Forms
             0,
             0});
             this.TimeFilm.Name = "TimeFilm";
-            this.TimeFilm.Size = new System.Drawing.Size(66, 20);
+            this.TimeFilm.Size = new System.Drawing.Size(86, 20);
             this.TimeFilm.TabIndex = 4;
             this.TimeFilm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TimeFilm.Value = new decimal(new int[] {
@@ -113,60 +115,72 @@ namespace HWCinema.Forms
             0});
             this.TimeFilm.ValueChanged += new System.EventHandler(this.TimeFilm_ValueChanged);
             // 
-            // SaveSchedule
-            // 
-            this.SaveSchedule.Location = new System.Drawing.Point(157, 89);
-            this.SaveSchedule.Name = "SaveSchedule";
-            this.SaveSchedule.Size = new System.Drawing.Size(140, 30);
-            this.SaveSchedule.TabIndex = 7;
-            this.SaveSchedule.Text = "Сохранить изменения";
-            this.SaveSchedule.UseVisualStyleBackColor = true;
-            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Location = new System.Drawing.Point(106, 77);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(56, 20);
+            this.textBox1.Size = new System.Drawing.Size(88, 20);
             this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Минут";
+            this.textBox1.Text = "Колличество";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(83, 12);
+            this.textBox2.Location = new System.Drawing.Point(9, 12);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(286, 20);
             this.textBox2.TabIndex = 9;
-            this.textBox2.Text = "Минут";
+            this.textBox2.Text = "Список фильмов";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(205, 95);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(226, 92);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(66, 20);
+            this.textBox3.TabIndex = 11;
+            this.textBox3.Text = "Прокатный";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ScheduleManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumOrchid;
-            this.ClientSize = new System.Drawing.Size(452, 134);
+            this.ClientSize = new System.Drawing.Size(304, 134);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.SaveSchedule);
             this.Controls.Add(this.TimeFilm);
             this.Controls.Add(this.TextTimeMinutes);
             this.Controls.Add(this.CountFilms);
             this.Controls.Add(this.NameMovie);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Location = new System.Drawing.Point(1440, 800);
-            this.MaximumSize = new System.Drawing.Size(468, 173);
-            this.MinimumSize = new System.Drawing.Size(468, 173);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScheduleManager_FormClosing);
+            this.Location = new System.Drawing.Point(1530, 800);
+            this.MaximumSize = new System.Drawing.Size(320, 173);
+            this.MinimumSize = new System.Drawing.Size(320, 173);
             this.Name = "ScheduleManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Schedule Manager";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScheduleManager_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.FilmsSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountFilms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeFilm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -176,8 +190,9 @@ namespace HWCinema.Forms
         private System.Windows.Forms.TextBox TextTimeMinutes;
         private System.Windows.Forms.NumericUpDown TimeFilm;
         private System.Windows.Forms.BindingSource FilmsSource;
-        private System.Windows.Forms.Button SaveSchedule;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private CheckBox checkBox1;
+        private TextBox textBox3;
     }
 }
