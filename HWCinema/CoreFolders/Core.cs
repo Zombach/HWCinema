@@ -34,19 +34,10 @@ namespace HWCinema.CoreFolders
                 TmpData tmpData = new TmpData(new List<FilmData>(), Halls[i].AllTimeWorkInMinutes);
                 CreateGraph(Halls[i], tmpData);
             }
-        }
+        }       
 
-        private void FilmsCopy(TmpData tmpData)
+        private void CreateGraph(Hall hall, TmpData tmpData)
         {
-            foreach (FilmData films in tmpData.FilmDatas)
-            {
-                FilmTmp.Add(films);
-            }
-        }
-
-        public void CreateGraph(Hall hall, TmpData tmpData)
-        {  
-            
             foreach (FilmData film in Films)
             {
                 if(film.Time <= tmpData.Times)
@@ -57,27 +48,44 @@ namespace HWCinema.CoreFolders
                         FilmsCopy(tmpData);
                     }
                     FilmTmp.Add(film);
-
                     TmpData DataTmp = new TmpData(FilmTmp, tmpData.Times - film.Time);
                     CreateGraph(hall, DataTmp);
                 }
             }
-
-            bool test = true;
+            WriteInHall(hall, tmpData);
+        }
+        private void FilmsCopy(TmpData tmpData)
+        {
+            foreach (FilmData films in tmpData.FilmDatas)
+            {
+                FilmTmp.Add(films);
+            }
+        }
+        private void  WriteInHall(Hall hall, TmpData tmpData)
+        {
+            bool isLast = CheckLastElement(tmpData);
+            if (isLast)
+            {
+                Write(hall, tmpData);
+            }
+        }
+        private bool CheckLastElement(TmpData tmpData)
+        {
+            bool isLast = true;
             foreach (FilmData film in Films)
             {
                 if (film.Time <= tmpData.Times)
                 {
-                    test = false;
+                    isLast = false;
                 }
             }
-            if (test)
-            {
-                hall.SetFilms = tmpData.FilmDatas;
-                tmpData.FilmDatas.Clear();
-                hall.AllFreeTime.Add(tmpData.Times);
-            }
+            return isLast;
         }
-        
+        private void Write(Hall hall, TmpData tmpData)
+        {
+            hall.SetFilms = tmpData.FilmDatas;
+            tmpData.FilmDatas.Clear();
+            hall.AllFreeTime.Add(tmpData.Times);
+        }        
     }
 }
