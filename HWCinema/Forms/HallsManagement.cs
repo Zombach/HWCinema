@@ -23,6 +23,7 @@ namespace HWCinema.Forms
             Enable(false);
             HallsSource.DataSource = _core.Halls;           
             HallsSource.ResetBindings(true);
+            _menu = menu;
         }
 
         private void Enable(bool isOn)
