@@ -14,8 +14,9 @@ namespace HWCinema.Forms
     public partial class HallsManagement : Form
     {
         private Core _core = Core.GetCore();
+        private Form _menu;
         private bool isActiveButton;
-        public HallsManagement()
+        public HallsManagement(Form menu)
         {
             InitializeComponent();
             HallsSource.DataSource = _core.Halls;
@@ -23,6 +24,7 @@ namespace HWCinema.Forms
             _core.Halls.Add(new Hall("qdw"));
             _core.Halls.Add(new Hall("ad"));            
             HallsSource.ResetBindings(true);
+            _menu = menu;
         }
 
         private void AddHall_Click(object sender, EventArgs e)
