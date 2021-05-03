@@ -19,7 +19,7 @@ namespace HWCinema.Forms
 
         private void Create_Click(object sender, EventArgs e)
         {
-            HallsManagement create = new HallsManagement();
+            HallsManagement create = new HallsManagement(this);
             create.Show();
         }
 
