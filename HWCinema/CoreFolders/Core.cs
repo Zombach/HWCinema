@@ -13,14 +13,14 @@ namespace HWCinema.CoreFolders
         private static Core _core;
         public string MyPathSettings { get; set; }
         public List <Hall> Halls { get; set; }
+        public List<Hall> Schedule { get; set; }
+        public Dictionary<Hall, List<Hall>> ScheduleHalls { get; set; }
 
         public List<FilmData> Films { get; set; }
         public List<FilmData> FilmsTmp { get; set; }
-        public List<FilmData> FilmsVariants { get; set; }
+        public List<FilmData> FilmsSelected { get; set; }
         public List<FilmData> FilmPriority { get; set; }
-        public List<Node> Nodes { get; set; }
-        public Node Node { get; set; }
-        public Node NodeTmp { get; set; }
+        public Hall Hall { get; set; }
         public int[] FreeTime { get; set; }
 
         public List<string> NameSessions { get; set; }
@@ -32,7 +32,9 @@ namespace HWCinema.CoreFolders
             Films = new List<FilmData>();
             FilmsTmp = new List<FilmData>();
             FilmPriority = new List<FilmData>();
-            FilmsVariants = new List<FilmData>();
+            FilmsSelected = new List<FilmData>();
+            ScheduleHalls = new Dictionary<Hall, List<Hall>>();
+            Schedule = new List<Hall>();
 
             NameSessions = new List<string>();
             MyPathSettings = @"../../Settings/Settings.txt";
@@ -58,30 +60,53 @@ namespace HWCinema.CoreFolders
         {
             for (int i = 0; i < Halls.Count; i++)
             {
-                Node = new Node(0);
-                CreateGraph(Halls[i]);
+                Schedule.Clear();
+                TmpData tmpData = new TmpData(new List<FilmData>(), Halls[i].AllTimeWorkInMinutes);
+                CreateGraph(Halls[i], tmpData);
+                //Halls[i].SetFilm = Schedule;
+                //ScheduleHalls.Add(Halls[i], Schedule);
             }
         }
 
-        public void CreateGraph(Hall hall)
-        {
+
+        public void CreateGraph(Hall hall, TmpData tmpData)
+        {  
+            
             foreach (FilmData film in Films)
             {
-                if(film.Time <= hall.FreeTime)
+                if(film.Time <= tmpData.Times)
                 {
-                    //FilmsVariants = new List<FilmData>();
-                    //foreach (FilmData filmCurrent in Films)
-                    //{
-                    //    FilmsVariants.Add(filmCurrent);
-                    //}
-                    hall.FreeTime = film.Time;
-                    NodeTmp = new Node(hall, film, _core);
-                    Node.Nodes.Add(NodeTmp);
-                    Node.NextNode(hall);
+                    List<FilmData> tmp = new List<FilmData>();
+                    if (tmpData.FilmDatas != null)
+                    {
+                        foreach (FilmData filmsSelected in tmpData.FilmDatas)
+                        {
+                            tmp.Add(filmsSelected);
+                        }
+                    }
+                    tmp.Add(film);
+
+                    TmpData DataTmp = new TmpData(tmp, tmpData.Times - film.Time);
+                    CreateGraph(hall, DataTmp);
                 }
             }
-        }
 
+            bool test = true;
+            foreach (FilmData film in Films)
+            {
+                if (film.Time <= tmpData.Times)
+                {
+                    test = false;
+                }
+            }
+            if (test)
+            {
+                hall.SetFilms = tmpData.FilmDatas;
+                tmpData.FilmDatas.Clear();
+                hall.AllFreeTime.Add(tmpData.Times);
+                //Schedule.Add(hall);
+            }
+        }
         
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HWCinema.Serelization.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,8 @@ namespace HWCinema.CoreFolders
         private int _hourClose;
         private int _minutesClose;
         private int _timeWorkInMinutes;
-        private int _freeTime;
-        private FilmData _film;
+        private List<int> _freeTime;
+        private List<List<FilmData>> _scheduleFilms;
         private List<FilmData> _films;
 
         public bool RemoveFilms
@@ -30,7 +31,8 @@ namespace HWCinema.CoreFolders
             set
             {
                 _films.Clear();
-                _freeTime = _timeWorkInMinutes;
+                _freeTime.Clear();
+                _freeTime.Add(_timeWorkInMinutes);
             }
         }
         public bool RemoveLastFilm
@@ -43,13 +45,12 @@ namespace HWCinema.CoreFolders
             {
                 if (_films.Count != 0)
                 {
-                    FilmData LastFilm = _films[_films.Count - 1];
-                    _freeTime = -LastFilm.Time;
-                    _films.Remove(LastFilm);
+                    _freeTime.RemoveAt(_freeTime.Count - 1);
+                    _films.RemoveAt(_films.Count -1);
                 }
             }
         }
-        public int FreeTime
+        public List<int> AllFreeTime
         {
             get
             {
@@ -57,34 +58,83 @@ namespace HWCinema.CoreFolders
             }
             set
             {
-                _freeTime -= value;
+                _freeTime.Clear();
+                _freeTime.AddRange(value);
+            }
+        }
+
+        public int FreeTime
+        {
+            get
+            {
+                return _freeTime[_freeTime.Count -1];
+            }
+            set
+            {
+                _freeTime[_freeTime.Count - 1] -= value;
+            }
+        }
+
+        public List<List<FilmData>> GetScheduleFilms
+        {
+            get
+            {
+                if (_scheduleFilms == null)
+                {
+                    _scheduleFilms = new List<List<FilmData>>();
+                }
+                return _scheduleFilms;
+            }
+            private set
+            {
             }
         }
         public List<FilmData> GetFilms
         {
             get
             {
+                if (_films == null)
+                {
+                    _films = new List<FilmData>();
+                }
+
+                if (_scheduleFilms.Count != 0)
+                {
+                    _films = _scheduleFilms[_scheduleFilms.Count - 1];
+                }
                 return _films;
             }
             private set
             {
-                _films.Add(_film);
+
             }
         }
-        public FilmData SetFilm
+        public List<List<FilmData>> SetScheduleFilms
         {
-            private get
+            get
             {
-                return _film;
+                return new List<List<FilmData>>();
             }
             set
             {
-
-                GetFilms.Add(new FilmData(value));
+                _scheduleFilms = value;
+            }
+        }
+        public List<FilmData> SetFilms
+        {
+            get
+            {
+                return _scheduleFilms[_scheduleFilms.Count - 1];
+            }
+            set
+            {
+                _films = new List<FilmData>();
+                _films.AddRange(value);
+                _scheduleFilms.Add(_films);
             }
         }
 
-        
+
 
         public string Name
         {
@@ -180,22 +230,10 @@ namespace HWCinema.CoreFolders
                 return _timeWorkInMinutes;
             }
             private set
-            {
-                
+            {                
             }
         }
 
-        public Hall(Hall hall)
-        {
-            _name = hall.Name;
-            _hourOpen = hall.HourOpening;
-            _hourClose = hall.HourClosing;
-            _minutesOpen = hall.MinutesOpen;
-            _minutesClose = hall.MinutesClosing;
-            _timeWorkInMinutes = hall.AllTimeWorkInMinutes;
-            _freeTime = _timeWorkInMinutes;
-            _film = hall._film;
-        }
 
         public Hall(string name)
         {
@@ -205,8 +243,9 @@ namespace HWCinema.CoreFolders
             _minutesOpen = 00;
             _minutesClose = 59;
             _timeWorkInMinutes = AllTimeWorkInMinutes;
-            _freeTime = _timeWorkInMinutes;
+            _freeTime = new List<int>();
             _films = new List<FilmData>();
+            _scheduleFilms = new List<List<FilmData>>();
         }
 
         public void SetTimeOpening(string hour, string minutes)
@@ -243,7 +282,16 @@ namespace HWCinema.CoreFolders
             return _time;
         }
 
-        
+        public int GetTimeOpenInMinutes()
+        {
+            int tmp = _hourOpen * 60 + _minutesOpen;
+            return tmp;
+        }
+        public int GetTimeCloseInMinutes()
+        {
+            int tmp = _hourOpen * 60 + _minutesOpen;
+            return tmp;
+        }
 
         private void SetTimes(bool isOpen)
         {
