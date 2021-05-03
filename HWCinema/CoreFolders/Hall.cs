@@ -287,12 +287,7 @@ namespace HWCinema.CoreFolders
             int tmp = _hourOpen * 60 + _minutesOpen;
             return tmp;
         }
-        public int GetTimeCloseInMinutes()
-        {
-            int tmp = _hourOpen * 60 + _minutesOpen;
-            return tmp;
-        }
-
+       
         private void SetTimes(bool isOpen)
         {
             if(isOpen)
