@@ -175,7 +175,7 @@ namespace HWCinema.CoreFolders
             {
                 if (value < 10 || value > 23)
                 {
-                    _hourClose = 23;
+                    _hourClose = 0;
                 }
                 else
                 {
@@ -209,14 +209,21 @@ namespace HWCinema.CoreFolders
             }
             set
             {
-                if (value < 0 || value > 59)
+                if (_hourClose == 0)
                 {
-                    _minutesClose = 59;
+                    _minutesClose = 0;
                 }
                 else
                 {
-                    _minutesClose = value;
-                }
+                    if (value < 0 || value > 59)
+                    {
+                        _minutesClose = 59;
+                    }
+                    else
+                    {
+                        _minutesClose = value;
+                    }
+                }                
             }
         }
 
@@ -224,7 +231,12 @@ namespace HWCinema.CoreFolders
         {
             get
             {
-                int tmpHour = _hourClose - _hourOpen;
+                int hourClose = _hourClose;
+                if (_hourClose == 0)
+                {
+                    hourClose = 24;
+                }
+                int tmpHour = hourClose - _hourOpen;
                 int tmpMinutes = _minutesClose - _minutesOpen;
                 _timeWorkInMinutes = tmpHour * 60 + tmpMinutes;
                 return _timeWorkInMinutes;
@@ -239,9 +251,9 @@ namespace HWCinema.CoreFolders
         {
             _name = name;
             _hourOpen = 10;
-            _hourClose = 23;
+            _hourClose = 00;
             _minutesOpen = 00;
-            _minutesClose = 59;
+            _minutesClose = 00;
             _timeWorkInMinutes = AllTimeWorkInMinutes;
             _freeTime = new List<int>();
             _films = new List<FilmData>();
