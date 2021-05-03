@@ -19,8 +19,45 @@ namespace HWCinema.CoreFolders
         private int _minutesClose;
         private int _timeWorkInMinutes;
         private List<int> _freeTime;
+        private List<int> _fteeTime_Sort;
         private List<List<FilmData>> _scheduleFilms;
+        private List<List<FilmData>> _sortSchedule;
         private List<FilmData> _films;
+
+        public void Clean_Schedule_Sort()
+        {
+            _sortSchedule = new List<List<FilmData>>();
+        }
+        public List<List<FilmData>> GetSort
+        {
+            get
+            {
+                if (_sortSchedule == null)
+                {
+                    _sortSchedule = new List<List<FilmData>>();
+                }
+                return _sortSchedule;
+            }
+            private set
+            {
+
+            }
+        }
+        public List<List<FilmData>> SetSort
+        {
+            private get
+            {
+                return _sortSchedule;
+            }
+            set
+            {
+                if (_sortSchedule == null)
+                {
+                    _sortSchedule = new List<List<FilmData>>();
+                }    
+                _sortSchedule.AddRange(value);
+            }
+        }
 
         public bool RemoveFilms
         {
@@ -48,6 +85,22 @@ namespace HWCinema.CoreFolders
                     _freeTime.RemoveAt(_freeTime.Count - 1);
                     _films.RemoveAt(_films.Count -1);
                 }
+            }
+        }
+        public List<int> AllFreeTime_Sort
+        {
+            get
+            {
+                return _fteeTime_Sort;
+            }
+            set
+            {
+                if (_fteeTime_Sort == null)
+                {
+                    _fteeTime_Sort = new List<int>();
+                }
+                _fteeTime_Sort.Clear();
+                _fteeTime_Sort.AddRange(value);
             }
         }
         public List<int> AllFreeTime
@@ -108,6 +161,11 @@ namespace HWCinema.CoreFolders
             {
 
             }
+        }
+
+        public void CleanScheduleFilms()
+        {
+            _scheduleFilms = new List<List<FilmData>>();
         }
         public List<List<FilmData>> SetScheduleFilms
         {

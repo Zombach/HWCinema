@@ -62,7 +62,10 @@ namespace HWCinema.Forms
 
         private void ScheduleView_Click(object sender, EventArgs e)
         {
-            _core.CreateSchedule();
+            if (_core.Halls.Count == 0 || _core.Halls[0].GetScheduleFilms.Count == 0)
+            { 
+                _core.CreateSchedule();
+            }
             for (int i = 0; i < _core.Halls.Count; i++)
             {
                 Hall halls = _core.Halls[i];
@@ -72,7 +75,7 @@ namespace HWCinema.Forms
                 ListBox.Items.Add(tmp);
                 for (int j = 0; j < halls.GetScheduleFilms.Count; j++)
                 {
-                    string tmp3 = $"Вариант расписания {j + 1}";
+                    string tmp3 = $"Вариант расписания {j + 1}, осталось свободного время {halls.AllFreeTime[j]}";
                     string qwe = "";
                     ListBox.Items.Add(qwe);
                     ListBox.Items.Add(tmp3);
@@ -112,6 +115,12 @@ namespace HWCinema.Forms
         private void Schedule_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SortingSchedules sorting = new SortingSchedules();
+            sorting.PreparingSort();
         }
     }
 }

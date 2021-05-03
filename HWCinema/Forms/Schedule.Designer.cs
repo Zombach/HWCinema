@@ -31,6 +31,7 @@ namespace HWCinema.Forms
         {
             this.ScheduleView = new System.Windows.Forms.Button();
             this.ListBox = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ScheduleView
@@ -51,12 +52,23 @@ namespace HWCinema.Forms
             this.ListBox.Size = new System.Drawing.Size(1419, 1005);
             this.ListBox.TabIndex = 2;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1408, 445);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(152, 130);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Сортировка эффективности";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1904, 1021);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ListBox);
             this.Controls.Add(this.ScheduleView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -74,5 +86,6 @@ namespace HWCinema.Forms
         #endregion
         private System.Windows.Forms.Button ScheduleView;
         private System.Windows.Forms.ListBox ListBox;
+        private System.Windows.Forms.Button button1;
     }
 }
