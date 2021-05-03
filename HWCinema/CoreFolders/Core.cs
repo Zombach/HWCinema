@@ -61,42 +61,50 @@ namespace HWCinema.CoreFolders
             for (int i = 0; i < Halls.Count; i++)
             {
                 Schedule.Clear();
-                CreateGraph(Halls[i]);
-                ScheduleHalls.Add(Halls[i], Schedule);
+                TmpData tmpData = new TmpData(new List<FilmData>(), Halls[i].AllTimeWorkInMinutes);
+                CreateGraph(Halls[i], tmpData);
+                //Halls[i].SetFilm = Schedule;
+                //ScheduleHalls.Add(Halls[i], Schedule);
             }
         }
 
-        public void CreateGraph(Hall hall)
-        {
+
+        public void CreateGraph(Hall hall, TmpData tmpData)
+        {  
+            
             foreach (FilmData film in Films)
             {
-                if(film.Time <= hall.FreeTime)
+                if(film.Time <= tmpData.Times)
                 {
                     List<FilmData> tmp = new List<FilmData>();
-                    if (hall.GetFilms != null)
+                    if (tmpData.FilmDatas != null)
                     {
-                        foreach (FilmData filmsSelected in hall.GetFilms)
+                        foreach (FilmData filmsSelected in tmpData.FilmDatas)
                         {
                             tmp.Add(filmsSelected);
                         }
                     }
                     tmp.Add(film);
-                    Hall = new Hall(hall, film.Time, tmp);
-                    CreateGraph(Hall);
+
+                    TmpData DataTmp = new TmpData(tmp, tmpData.Times - film.Time);
+                    CreateGraph(hall, DataTmp);
                 }
             }
 
             bool test = true;
             foreach (FilmData film in Films)
             {
-                if (film.Time <= hall.FreeTime)
+                if (film.Time <= tmpData.Times)
                 {
                     test = false;
                 }
             }
             if (test)
             {
-                Schedule.Add(Hall);
+                hall.SetFilms = tmpData.FilmDatas;
+                tmpData.FilmDatas.Clear();
+                hall.AllFreeTime.Add(tmpData.Times);
+                //Schedule.Add(hall);
             }
         }
         
