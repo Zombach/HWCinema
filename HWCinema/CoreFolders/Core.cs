@@ -31,6 +31,16 @@ namespace HWCinema.CoreFolders
         {
             for (int i = 0; i < Halls.Count; i++)
             {
+                if (Halls[i].GetScheduleFilms != null)
+                {
+                    Halls[i].Clean_Schedule_Films();
+                    Halls[i].Clean_FreeTime_Shcedule();
+                }
+                if (Halls[i].GetSortFilms != null)
+                {
+                    Halls[i].Clean_Schedule_Sort();
+                    Halls[i].Clean_FreeTime_Sort();
+                }
                 TmpData tmpData = new TmpData(new List<FilmData>(), Halls[i].AllTimeWorkInMinutes);
                 CreateGraph(Halls[i], tmpData);
             }

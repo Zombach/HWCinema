@@ -18,17 +18,25 @@ namespace HWCinema.CoreFolders
         private int _hourClose;
         private int _minutesClose;
         private int _timeWorkInMinutes;
-        private List<int> _freeTime;
+        private List<int> _freeTime_Schedule;
         private List<int> _fteeTime_Sort;
         private List<List<FilmData>> _scheduleFilms;
         private List<List<FilmData>> _sortSchedule;
         private List<FilmData> _films;
 
+        public void Clean_FreeTime_Shcedule()
+        {
+            _freeTime_Schedule = new List<int>();
+        }
+        public void Clean_FreeTime_Sort()
+        {
+            _fteeTime_Sort = new List<int>();
+        }
         public void Clean_Schedule_Sort()
         {
             _sortSchedule = new List<List<FilmData>>();
         }
-        public List<List<FilmData>> GetSort
+        public List<List<FilmData>> GetSortFilms
         {
             get
             {
@@ -68,8 +76,8 @@ namespace HWCinema.CoreFolders
             set
             {
                 _films.Clear();
-                _freeTime.Clear();
-                _freeTime.Add(_timeWorkInMinutes);
+                _freeTime_Schedule.Clear();
+                _freeTime_Schedule.Add(_timeWorkInMinutes);
             }
         }
         public bool RemoveLastFilm
@@ -82,7 +90,7 @@ namespace HWCinema.CoreFolders
             {
                 if (_films.Count != 0)
                 {
-                    _freeTime.RemoveAt(_freeTime.Count - 1);
+                    _freeTime_Schedule.RemoveAt(_freeTime_Schedule.Count - 1);
                     _films.RemoveAt(_films.Count -1);
                 }
             }
@@ -107,12 +115,12 @@ namespace HWCinema.CoreFolders
         {
             get
             {
-                return _freeTime;
+                return _freeTime_Schedule;
             }
             set
             {
-                _freeTime.Clear();
-                _freeTime.AddRange(value);
+                _freeTime_Schedule.Clear();
+                _freeTime_Schedule.AddRange(value);
             }
         }
 
@@ -120,11 +128,11 @@ namespace HWCinema.CoreFolders
         {
             get
             {
-                return _freeTime[_freeTime.Count -1];
+                return _freeTime_Schedule[_freeTime_Schedule.Count -1];
             }
             set
             {
-                _freeTime[_freeTime.Count - 1] -= value;
+                _freeTime_Schedule[_freeTime_Schedule.Count - 1] -= value;
             }
         }
 
@@ -163,7 +171,7 @@ namespace HWCinema.CoreFolders
             }
         }
 
-        public void CleanScheduleFilms()
+        public void Clean_Schedule_Films()
         {
             _scheduleFilms = new List<List<FilmData>>();
         }
@@ -313,7 +321,7 @@ namespace HWCinema.CoreFolders
             _minutesOpen = 00;
             _minutesClose = 00;
             _timeWorkInMinutes = AllTimeWorkInMinutes;
-            _freeTime = new List<int>();
+            _freeTime_Schedule = new List<int>();
             _films = new List<FilmData>();
             _scheduleFilms = new List<List<FilmData>>();
         }

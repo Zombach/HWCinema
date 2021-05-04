@@ -15,12 +15,14 @@ namespace HWCinema.Forms
     {
         private Core _core = Core.GetCore();
         private bool isActiveButton;
-        public HallsManagement()
+        private Schedule _schedule;
+        public HallsManagement(Form schedule)
         {
             InitializeComponent();
             Enable(false);
             HallsSource.DataSource = _core.Halls;           
             HallsSource.ResetBindings(true);
+            _schedule = (Schedule)schedule;
         }
 
         private void Enable(bool isOn)
@@ -161,7 +163,9 @@ namespace HWCinema.Forms
 
         private void HallsManagement_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            e.Cancel = true;
+            _schedule.IsOpenHallsManager = false;
+            this.Hide();
         }
     }
 }
