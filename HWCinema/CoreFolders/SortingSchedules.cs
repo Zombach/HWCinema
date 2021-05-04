@@ -110,25 +110,15 @@ namespace HWCinema.CoreFolders
                 }
             }
 
-            List<int> tmptmp = new List<int>();
-            List<int> tmpNull = new List<int>();
-            if (tmpIndex.Count == 1)
+            int tmpCount = 1;
+            for (int i = 1; i <= _halls[tmpIndex[0]].GetSortFilms[0].Count; i++)
             {
-                _tmpTime[tmpIndex[0]].RemoveAt(0);
+                tmpCount *= i;
             }
-            else
+
+            if (tmpIndex.Count <= tmpCount)
             {
-                for (int i = 0; i < tmpIndex.Count; i++)
-                {
-                    if (_tmpTime[tmpIndex[i]].Count > 1)
-                    {
-                        tmptmp.Add(_tmpTime[tmpIndex[i]][1]);
-                    }
-                    else
-                    {
-                        tmpNull.Add(i);
-                    }
-                }
+
             }
 
 
