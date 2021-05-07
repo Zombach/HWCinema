@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace HWCinema.CoreFolders
 {
     public class TmpData
     {
-        public List<FilmData> Films { get; set; }
-        public int Times { get; set; }
+        public List<FilmData> Films { get; private set; }
+        public int Times { get; private set; }
 
-        public TmpData(List<FilmData> filmDatas, int times)
+        public TmpData(List<FilmData> data, int times)
         {
             Films = new List<FilmData>();
-            Films.AddRange(filmDatas);
+            Films.AddRange(data);
             Times = times;
         }
     }

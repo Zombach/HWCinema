@@ -58,8 +58,8 @@ namespace HWCinema.CoreFolders
                         FilmsCopy(tmpData);
                     }
                     FilmTmp.Add(film);
-                    TmpData DataTmp = new TmpData(FilmTmp, tmpData.Times - film.Time);
-                    CreateGraph(hall, DataTmp);
+                    TmpData dataTmp = new TmpData(FilmTmp, tmpData.Times - film.Time);
+                    CreateGraph(hall, dataTmp);
                 }
             }
             WriteInHall(hall, tmpData);

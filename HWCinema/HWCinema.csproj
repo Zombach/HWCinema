@@ -80,12 +80,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serelization\Json\Deserialize.cs" />
-    <Compile Include="Serelization\Json\LoadSettings.cs" />
-    <Compile Include="Serelization\Json\SaveSettings.cs" />
-    <Compile Include="Serelization\Json\Serialize.cs" />
-    <Compile Include="Serelization\Json\Settings.cs" />
-    <Compile Include="Serelization\Structs\StructSettings.cs" />
+    <Compile Include="Serialization\Json\Deserialize.cs" />
+    <Compile Include="Serialization\Json\LoadSettings.cs" />
+    <Compile Include="Serialization\Json\SaveSettings.cs" />
+    <Compile Include="Serialization\Json\Serialize.cs" />
+    <Compile Include="Serialization\Json\Settings.cs" />
+    <Compile Include="Serialization\Structs\StructSettings.cs" />
     <EmbeddedResource Include="Forms\HallsManagement.resx">
       <DependentUpon>HallsManagement.cs</DependentUpon>
     </EmbeddedResource>

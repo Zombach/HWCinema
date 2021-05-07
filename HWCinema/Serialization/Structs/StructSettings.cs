@@ -1,11 +1,7 @@
-﻿using HWCinema.CoreFolders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using HWCinema.CoreFolders;
 
-namespace HWCinema.Serelization.Structs
+namespace HWCinema.Serialization.Structs
 {
     public struct StructSettings
     {

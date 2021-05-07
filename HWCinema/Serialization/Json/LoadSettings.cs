@@ -1,13 +1,13 @@
-﻿using HWCinema.Serelization.Structs;
-using HWCinema.CoreFolders;
+﻿using HWCinema.CoreFolders;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HWCinema.Serialization.Structs;
 
-namespace HWCinema.Serelization.Json
+namespace HWCinema.Serialization.Json
 {
     public class LoadSettings
     {

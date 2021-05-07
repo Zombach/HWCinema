@@ -1,12 +1,5 @@
 ﻿using HWCinema.CoreFolders;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HWCinema.Forms
@@ -14,9 +7,9 @@ namespace HWCinema.Forms
     public partial class ScheduleManager : Form
     {
         private Core _core = Core.GetCore();
-        private Schedule _schedule;
+        private readonly Schedule _schedule;
         private int _countFilms;
-        private int indexName = 1;
+        private int _indexName = 1;
         private int _index;
         private FilmData _tmpData;
         private string _tmpName;
@@ -38,7 +31,8 @@ namespace HWCinema.Forms
                 FilmData[] filmData = new FilmData[(int)CountFilms.Value - _countFilms];
                 for (int i = 0; i < filmData.Length; i++)
                 {
-                    filmData[i] = new FilmData("Фильм " + indexName++, DefaultTime);                    
+                    string name = "Фильм ";
+                    filmData[i] = new FilmData(name + _indexName++, DefaultTime);                    
                 }
                 _core.Films.AddRange(filmData);
             }
@@ -48,7 +42,7 @@ namespace HWCinema.Forms
                 for (int i = 0; i < tmp; i++)
                 {
                     _core.Films.RemoveAt(_core.Films.Count - 1);
-                    indexName--;
+                    _indexName--;
                 }                
             }
             _countFilms = (int)CountFilms.Value;

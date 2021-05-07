@@ -1,5 +1,4 @@
-﻿using HWCinema.Serelization.Structs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,27 +9,27 @@ namespace HWCinema.CoreFolders
     public class Hall
     {
         private string _time;
-        private string _zeroChar_H = "";
-        private string _zeroChar_M = "";
+        private string _zeroCharH = "";
+        private string _zeroCharM = "";
         private string _name;
         private int _hourOpen;
         private int _minutesOpen;
         private int _hourClose;
         private int _minutesClose;
         private int _timeWorkInMinutes;
-        private List<int> _freeTime_Schedule;
-        private List<int> _fteeTime_Sort;
+        private List<int> _freeTimeSchedule;
+        private List<int> _fteeTimeSort;
         private List<List<FilmData>> _scheduleFilms;
         private List<List<FilmData>> _sortSchedule;
         private List<FilmData> _films;
 
         public void Clean_FreeTime_Shcedule()
         {
-            _freeTime_Schedule = new List<int>();
+            _freeTimeSchedule = new List<int>();
         }
         public void Clean_FreeTime_Sort()
         {
-            _fteeTime_Sort = new List<int>();
+            _fteeTimeSort = new List<int>();
         }
         public void Clean_Schedule_Sort()
         {
@@ -38,18 +37,8 @@ namespace HWCinema.CoreFolders
         }
         public List<List<FilmData>> GetSortFilms
         {
-            get
-            {
-                if (_sortSchedule == null)
-                {
-                    _sortSchedule = new List<List<FilmData>>();
-                }
-                return _sortSchedule;
-            }
-            private set
-            {
-
-            }
+            get => _sortSchedule ?? (_sortSchedule = new List<List<FilmData>>());
+            private set => _scheduleFilms = value;
         }
         public List<List<FilmData>> SetSort
         {
@@ -76,8 +65,8 @@ namespace HWCinema.CoreFolders
             set
             {
                 _films.Clear();
-                _freeTime_Schedule.Clear();
-                _freeTime_Schedule.Add(_timeWorkInMinutes);
+                _freeTimeSchedule.Clear();
+                _freeTimeSchedule.Add(_timeWorkInMinutes);
             }
         }
         public bool RemoveLastFilm
@@ -90,50 +79,38 @@ namespace HWCinema.CoreFolders
             {
                 if (_films.Count != 0)
                 {
-                    _freeTime_Schedule.RemoveAt(_freeTime_Schedule.Count - 1);
+                    _freeTimeSchedule.RemoveAt(_freeTimeSchedule.Count - 1);
                     _films.RemoveAt(_films.Count -1);
                 }
             }
         }
         public List<int> AllFreeTime_Sort
         {
-            get
-            {
-                return _fteeTime_Sort;
-            }
+            get => _fteeTimeSort;
             set
             {
-                if (_fteeTime_Sort == null)
+                if (_fteeTimeSort == null)
                 {
-                    _fteeTime_Sort = new List<int>();
+                    _fteeTimeSort = new List<int>();
                 }
-                _fteeTime_Sort.Clear();
-                _fteeTime_Sort.AddRange(value);
+                _fteeTimeSort.Clear();
+                _fteeTimeSort.AddRange(value);
             }
         }
         public List<int> AllFreeTime
         {
-            get
-            {
-                return _freeTime_Schedule;
-            }
+            get => _freeTimeSchedule;
             set
             {
-                _freeTime_Schedule.Clear();
-                _freeTime_Schedule.AddRange(value);
+                _freeTimeSchedule.Clear();
+                _freeTimeSchedule.AddRange(value);
             }
         }
 
         public int FreeTime
         {
-            get
-            {
-                return _freeTime_Schedule[_freeTime_Schedule.Count -1];
-            }
-            set
-            {
-                _freeTime_Schedule[_freeTime_Schedule.Count - 1] -= value;
-            }
+            get => _freeTimeSchedule[_freeTimeSchedule.Count -1];
+            set => _freeTimeSchedule[_freeTimeSchedule.Count - 1] -= value;
         }
 
         public List<List<FilmData>> GetScheduleFilms
@@ -177,21 +154,12 @@ namespace HWCinema.CoreFolders
         }
         public List<List<FilmData>> SetScheduleFilms
         {
-            get
-            {
-                return new List<List<FilmData>>();
-            }
-            set
-            {
-                _scheduleFilms = value;
-            }
+            get => new List<List<FilmData>>();
+            set => _scheduleFilms = value;
         }
         public List<FilmData> SetFilms
         {
-            get
-            {
-                return _scheduleFilms[_scheduleFilms.Count - 1];
-            }
+            get => _scheduleFilms[_scheduleFilms.Count - 1];
             set
             {
                 _films = new List<FilmData>();
@@ -204,21 +172,12 @@ namespace HWCinema.CoreFolders
 
         public string Name
         {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
+            get => _name;
+            set => _name = value;
         }
         public int HourOpening
         {
-            get
-            {
-                return _hourOpen;
-            }
+            get => _hourOpen;
             set
             {
                 if (value < 10 || value > 23)
@@ -233,10 +192,7 @@ namespace HWCinema.CoreFolders
         }
         public int HourClosing
         {
-            get
-            {
-                return _hourClose;
-            }
+            get => _hourClose;
             set
             {
                 if (value < 10 || value > 23)
@@ -251,10 +207,7 @@ namespace HWCinema.CoreFolders
         }
         public int MinutesOpen
         {
-            get
-            {
-                return _minutesOpen;
-            }
+            get => _minutesOpen;
             set
             {
                 if (value < 0 || value > 59)
@@ -269,10 +222,7 @@ namespace HWCinema.CoreFolders
         }
         public int MinutesClosing
         {
-            get
-            {
-                return _minutesClose;
-            }
+            get => _minutesClose;
             set
             {
                 if (_hourClose == 0)
@@ -321,7 +271,7 @@ namespace HWCinema.CoreFolders
             _minutesOpen = 00;
             _minutesClose = 00;
             _timeWorkInMinutes = AllTimeWorkInMinutes;
-            _freeTime_Schedule = new List<int>();
+            _freeTimeSchedule = new List<int>();
             _films = new List<FilmData>();
             _scheduleFilms = new List<List<FilmData>>();
         }
@@ -370,46 +320,46 @@ namespace HWCinema.CoreFolders
         {
             if(isOpen)
             {
-                _time = _zeroChar_H + HourOpening + ":" + _zeroChar_M + MinutesOpen;
+                _time = _zeroCharH + HourOpening + ":" + _zeroCharM + MinutesOpen;
             }
             else
             {
-                _time = _zeroChar_H + HourClosing + ":" + _zeroChar_M + MinutesClosing;
+                _time = _zeroCharH + HourClosing + ":" + _zeroCharM + MinutesClosing;
             }
         }
         private void SetZeroChar_H(bool isOpen)
         {
-            _zeroChar_H = "";
+            _zeroCharH = "";
             if (isOpen)
             {
                 if (_hourOpen < 10)
                 {
-                    _zeroChar_H = "0";
+                    _zeroCharH = "0";
                 }
             }
             else
             {
                 if (_hourClose < 10)
                 {
-                    _zeroChar_H = "0";
+                    _zeroCharH = "0";
                 }
             }
         }
         private void SetZeroChar_M(bool isOpen)
         {
-            _zeroChar_M = "";
+            _zeroCharM = "";
             if (isOpen)
             {
                 if (_minutesOpen < 10)
                 {
-                    _zeroChar_M = "0";
+                    _zeroCharM = "0";
                 }
             }
             else
             {
                 if (_minutesClose< 10)
                 {
-                    _zeroChar_M = "0";
+                    _zeroCharM = "0";
                 }
             }
         }

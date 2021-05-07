@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HWCinema.CoreFolders
+﻿namespace HWCinema.CoreFolders
 {
     public class FilmData
     {
         /// <summary>
-        /// Имя фильма
+        /// Movie name
         /// </summary>
         public string Name { get; set; } = "";
         /// <summary>
-        /// Время которое идет фильм
+        /// Movie time is running
         /// </summary>
         public int Time { get; set; }
         /// <summary>
-        /// Приоритетный фильм
+        /// Priority film
         /// </summary>
         public bool IsPriority { get; set; }
         /// <summary>
-        /// Колличество повторов
+        /// Number of repetitions
         /// </summary>
         public int RepeatCount { get; set; }
         public bool RepeatOtherHalls { get; set; }

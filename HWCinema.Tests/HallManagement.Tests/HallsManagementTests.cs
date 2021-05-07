@@ -1,13 +1,11 @@
-using NUnit.Framework;
-using System.Collections;
 using HWCinema.CoreFolders;
+using NUnit.Framework;
 using System.Collections.Generic;
-using HWCinema.Tests.HallManagement.Tests;
 
-namespace HWCinema.Tests.HallsManagement.Tests
+namespace HWCinema.Tests.HallManagement.Tests
 {
     public class HallsManagementTests
-    {
+    {//NamespaceDefinition does  not correspond to the file local
         [TestCaseSource(typeof(AddHallsTestSource))]
         public void AddingHall_WhenAdding_GeneralListHalls(List<Hall> actual, Hall hall, List<Hall> expected)
         {

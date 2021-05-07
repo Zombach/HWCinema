@@ -12,8 +12,8 @@ namespace HWCinema.CoreFolders
         public List<FilmData> SortFilms { get; set; }
         public List<FilmData> TmpFilms { get; set; }
         public List<List<FilmData>> SchedulesFilms { get; set; }
-        public List<List<int>> _tmpTime { get; set; }
-        public int[,] Index_Repeat { get; set; }
+        public List<List<int>> TmpTime { get; set; }
+        public int[,] IndexRepeat { get; set; }
         private List <Hall> _halls { get; set; }
 
         public SortingSchedules()
@@ -87,24 +87,24 @@ namespace HWCinema.CoreFolders
         {
             foreach (Hall hall in _halls)
             {
-                _tmpTime.Add(hall.AllFreeTime_Sort);
+                TmpTime.Add(hall.AllFreeTime_Sort);
             }
 
-            Index_Repeat = new int[_tmpTime.Count,2];
-            int tmpTime = _tmpTime[0][0];
-            for (int i = 0; i < _tmpTime.Count; i++)
+            IndexRepeat = new int[TmpTime.Count,2];
+            int tmpTime = TmpTime[0][0];
+            for (int i = 0; i < TmpTime.Count; i++)
             {
-                if (tmpTime > _tmpTime[i][0])
+                if (tmpTime > TmpTime[i][0])
                 {
-                    tmpTime = _tmpTime[i][0];
+                    tmpTime = TmpTime[i][0];
                     i = -1;
                 }
             }
 
             List<int> tmpIndex = new List<int>();
-            for (int i = 0; i < _tmpTime.Count; i++)
+            for (int i = 0; i < TmpTime.Count; i++)
             {
-                if (tmpTime == _tmpTime[i][0])
+                if (tmpTime == TmpTime[i][0])
                 {
                     tmpIndex.Add(i);
                 }
