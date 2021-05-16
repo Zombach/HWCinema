@@ -5,6 +5,8 @@ namespace HWCinema.CoreFolders
     public class Core
     {
         private static Core _core;
+        private int _id;
+        public BoolFormSchedule BoolFormSchedule { get; set; }
         public string MyPathSettings { get; set; }
         public List <Hall> Halls { get; set; }
         public List<FilmData> Films { get; set; }
@@ -12,10 +14,12 @@ namespace HWCinema.CoreFolders
 
         private Core()
         {
+            Id = 0;
             Halls = new List<Hall>();
             Films = new List<FilmData>();
             FilmTmp = new List<FilmData>();
             MyPathSettings = @"../../Settings/Settings.txt";
+            BoolFormSchedule = new BoolFormSchedule();
         }
 
         public static Core GetCore()
@@ -27,22 +31,28 @@ namespace HWCinema.CoreFolders
             return _core;
         }
 
+        public int Id
+        {
+            get => _id++;
+            private set => _id = value;
+        }
+
         public void CreateSchedule()
         {
-            for (int i = 0; i < Halls.Count; i++)
+            foreach (Hall hall in Halls)
             {
-                if (Halls[i].GetScheduleFilms != null)
+                if (hall.GetScheduleFilms != null)
                 {
-                    Halls[i].Clean_Schedule_Films();
-                    Halls[i].Clean_FreeTime_Shcedule();
+                    hall.Clean_Schedule_Films();
+                    hall.Clean_FreeTime_Shcedule();
                 }
-                if (Halls[i].GetSortFilms != null)
+                if (hall.GetSortFilms != null)
                 {
-                    Halls[i].Clean_Schedule_Sort();
-                    Halls[i].Clean_FreeTime_Sort();
+                    hall.Clean_Schedule_Sort();
+                    hall.Clean_FreeTime_Sort();
                 }
-                TmpData tmpData = new TmpData(new List<FilmData>(), Halls[i].AllTimeWorkInMinutes);
-                CreateGraph(Halls[i], tmpData);
+                TmpData tmpData = new TmpData(new List<FilmData>(), hall.AllTimeWorkInMinutes);
+                CreateGraph(hall, tmpData);
             }
         }       
 
@@ -71,6 +81,7 @@ namespace HWCinema.CoreFolders
                 FilmTmp.Add(films);
             }
         }
+
         private void  WriteInHall(Hall hall, TmpData tmpData)
         {
             bool isLast = CheckLastElement(tmpData);

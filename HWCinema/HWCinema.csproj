@@ -49,9 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoreFolders\BoolFormSchedule.cs" />
     <Compile Include="CoreFolders\Core.cs" />
     <Compile Include="CoreFolders\FilmData.cs" />
     <Compile Include="CoreFolders\Hall.cs" />
+    <Compile Include="CoreFolders\Schedules.cs" />
     <Compile Include="CoreFolders\SortingSchedules.cs" />
     <Compile Include="CoreFolders\TmpData.cs" />
     <Compile Include="Forms\HallsManagement.cs">

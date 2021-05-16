@@ -21,6 +21,7 @@ namespace HWCinema.CoreFolders
         private List<int> _fteeTimeSort;
         private List<List<FilmData>> _scheduleFilms;
         private List<List<FilmData>> _sortSchedule;
+        private List<FilmData> _bestSortEfficiency;
         private List<FilmData> _films;
 
         public void Clean_FreeTime_Shcedule()
@@ -40,6 +41,13 @@ namespace HWCinema.CoreFolders
             get => _sortSchedule ?? (_sortSchedule = new List<List<FilmData>>());
             private set => _scheduleFilms = value;
         }
+
+        public List<FilmData> GetBestSortFilms
+        {
+            get => _bestSortEfficiency ?? (_bestSortEfficiency = new List<FilmData>());
+            private set => _bestSortEfficiency = value;
+        }
+
         public List<List<FilmData>> SetSort
         {
             private get

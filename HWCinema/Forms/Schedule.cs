@@ -17,8 +17,10 @@ namespace HWCinema.Forms
         private Form _menu;
         private Form _filmsManager;
         private Form _hallsManagement;
+
         private string _empty = "";
         private List<List<FilmData>> _tmpScheduleFilms;
+        private List<FilmData> _tmpFilms;
         private List<int> _freeTime;
         public bool IsOpenHallsManager { get; set; } = false;
         public bool IsOpenFilmsManager { get; set; } = false;
@@ -42,7 +44,6 @@ namespace HWCinema.Forms
             _filmsManager = filmsManager;
             filmsManager.Show();
             IsOpenFilmsManager = true;
-
         }
 
         private void FormHallsManagement()
@@ -59,7 +60,7 @@ namespace HWCinema.Forms
             _core.Films.Clear();
         }
 
-        private void CleanAllListBoxs()
+        private void CleanAllListBoxes()
         {
             ListSchedule.Items.Clear();
             ListSortEfficiency.Items.Clear();
@@ -74,7 +75,7 @@ namespace HWCinema.Forms
 
         private void WriteAllSchedule()
         {
-            CleanAllListBoxs();
+            CleanAllListBoxes();
             CleanTmpList();
             Write_NameHall(ListSchedule);
             CleanTmpList();
@@ -151,6 +152,10 @@ namespace HWCinema.Forms
                     _tmpScheduleFilms.AddRange(hall.GetSortFilms);
                     _freeTime.AddRange(hall.AllFreeTime_Sort);
                     break;
+                case 2:
+                    _tmpFilms.AddRange(hall.GetBestSortFilms);
+                    //_freeTime.AddRange(hall.AllFreeTime_Sort);
+                    break;
             }
         }
 
@@ -162,12 +167,14 @@ namespace HWCinema.Forms
                     return 0;
                 case "ListSortEfficiency":
                     return 1;
+                case "OneSortEfficiency":
+                    return 2;
                 default:
                     return -1;
             }
         }
 
-        private void CreateShedule_Click(object sender, EventArgs e)
+        private void CreateSchedule_Click(object sender, EventArgs e)
         {
             _core.CreateSchedule();
         }
@@ -254,5 +261,32 @@ namespace HWCinema.Forms
         {
 
         }
+
+        #region Set BoolFormShedule
+        private void CheckBoxNotRepeat_CheckedChanged(object sender, EventArgs e)
+        {
+            _core.BoolFormSchedule.IsNotRepeat = !_core.BoolFormSchedule.IsNotRepeat;
+        }
+
+        private void CheckBoxBest_CheckedChanged(object sender, EventArgs e)
+        {
+            _core.BoolFormSchedule.IsBest = !_core.BoolFormSchedule.IsBest;
+        }
+
+        private void CheckBoxSort_CheckedChanged(object sender, EventArgs e)
+        {
+            _core.BoolFormSchedule.IsSort = !_core.BoolFormSchedule.IsSort;
+        }
+
+        private void CheckBoxUnique_CheckedChanged(object sender, EventArgs e)
+        {
+            _core.BoolFormSchedule.IsUnique = !_core.BoolFormSchedule.IsUnique;
+        }
+
+        private void CheckBoxPriority_CheckedChanged(object sender, EventArgs e)
+        {
+            _core.BoolFormSchedule.IsPriority = !_core.BoolFormSchedule.IsPriority;
+        }
+        #endregion
     }
 }

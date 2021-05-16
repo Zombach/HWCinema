@@ -32,7 +32,7 @@ namespace HWCinema.Forms
                 for (int i = 0; i < filmData.Length; i++)
                 {
                     string name = "Фильм ";
-                    filmData[i] = new FilmData(name + _indexName++, DefaultTime);                    
+                    filmData[i] = new FilmData(name + _indexName++, DefaultTime, _core.Id);                    
                 }
                 _core.Films.AddRange(filmData);
             }

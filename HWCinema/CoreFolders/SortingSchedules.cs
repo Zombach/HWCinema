@@ -9,12 +9,12 @@ namespace HWCinema.CoreFolders
     public class SortingSchedules
     {
         private Core _core = Core.GetCore();
+        private List<Hall> _halls;
         public List<FilmData> SortFilms { get; set; }
         public List<FilmData> TmpFilms { get; set; }
         public List<List<FilmData>> SchedulesFilms { get; set; }
         public List<List<int>> TmpTime { get; set; }
         public int[,] IndexRepeat { get; set; }
-        private List <Hall> _halls { get; set; }
 
         public SortingSchedules()
         {
@@ -128,7 +128,7 @@ namespace HWCinema.CoreFolders
 
             //List<int> indexes = new List<int>();
             //_halls = new List<Hall>();
-            //_halls.AddRange(_core.Halls);
+            //_halls.AddRange(_core._halls);
             //List<int> tmpTime = new List<int>();
             //foreach (Hall hall in _halls)
             //{

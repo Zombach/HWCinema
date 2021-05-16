@@ -17,15 +17,15 @@
         /// <summary>
         /// Number of repetitions
         /// </summary>
-        public int RepeatCount { get; set; }
+        public int Id { get; set; }
         public bool RepeatOtherHalls { get; set; }
  
-        public FilmData(string name, int time, bool isPriority = false)
+        public FilmData(string name, int time, int id, bool isPriority = false)
         {
             Name = name;
             Time = time;
             IsPriority = isPriority;
-            RepeatCount = 0;
+            Id = id;
             RepeatOtherHalls = false;
         }
     }

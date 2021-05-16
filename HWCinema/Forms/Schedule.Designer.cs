@@ -37,8 +37,10 @@ namespace HWCinema.Forms
             this.ListSortEfficiency = new System.Windows.Forms.ListBox();
             this.ListSortNotRepeat = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.BestSortEfficiency = new System.Windows.Forms.ListBox();
             this.CreateShedule = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // ScheduleView
@@ -94,32 +96,32 @@ namespace HWCinema.Forms
             this.ListSortEfficiency.FormattingEnabled = true;
             this.ListSortEfficiency.Location = new System.Drawing.Point(595, 10);
             this.ListSortEfficiency.Name = "ListSortEfficiency";
-            this.ListSortEfficiency.Size = new System.Drawing.Size(579, 498);
+            this.ListSortEfficiency.Size = new System.Drawing.Size(579, 329);
             this.ListSortEfficiency.TabIndex = 6;
             // 
             // ListSortNotRepeat
             // 
             this.ListSortNotRepeat.FormattingEnabled = true;
-            this.ListSortNotRepeat.Location = new System.Drawing.Point(595, 517);
-            this.ListSortNotRepeat.Name = "listBox2";
-            this.ListSortNotRepeat.Size = new System.Drawing.Size(579, 498);
+            this.ListSortNotRepeat.Location = new System.Drawing.Point(595, 348);
+            this.ListSortNotRepeat.Name = "ListSortNotRepeat";
+            this.ListSortNotRepeat.Size = new System.Drawing.Size(579, 329);
             this.ListSortNotRepeat.TabIndex = 7;
             // 
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(1180, 517);
+            this.listBox3.Location = new System.Drawing.Point(1180, 349);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(579, 498);
+            this.listBox3.Size = new System.Drawing.Size(579, 329);
             this.listBox3.TabIndex = 9;
             // 
-            // listBox4
+            // BestSortEfficiency
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(1180, 10);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(579, 498);
-            this.listBox4.TabIndex = 8;
+            this.BestSortEfficiency.FormattingEnabled = true;
+            this.BestSortEfficiency.Location = new System.Drawing.Point(1180, 10);
+            this.BestSortEfficiency.Name = "BestSortEfficiency";
+            this.BestSortEfficiency.Size = new System.Drawing.Size(579, 329);
+            this.BestSortEfficiency.TabIndex = 8;
             // 
             // CreateShedule
             // 
@@ -129,17 +131,35 @@ namespace HWCinema.Forms
             this.CreateShedule.TabIndex = 10;
             this.CreateShedule.Text = "Составить расписание";
             this.CreateShedule.UseVisualStyleBackColor = true;
-            this.CreateShedule.Click += new System.EventHandler(this.CreateShedule_Click);
+            this.CreateShedule.Click += new System.EventHandler(this.CreateSchedule_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(1181, 686);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(579, 329);
+            this.listBox1.TabIndex = 17;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(595, 686);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(579, 329);
+            this.listBox2.TabIndex = 16;
             // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1900, 1037);
+            this.ClientSize = new System.Drawing.Size(1900, 1061);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.CreateShedule);
             this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox4);
+            this.Controls.Add(this.BestSortEfficiency);
             this.Controls.Add(this.ListSortNotRepeat);
             this.Controls.Add(this.ListSortEfficiency);
             this.Controls.Add(this.FilmsManager);
@@ -171,7 +191,9 @@ namespace HWCinema.Forms
         private System.Windows.Forms.ListBox ListSortEfficiency;
         private System.Windows.Forms.ListBox ListSortNotRepeat;
         private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox BestSortEfficiency;
         private System.Windows.Forms.Button CreateShedule;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }
