@@ -18,19 +18,32 @@ namespace HWCinema.CoreFolders
         private int _minutesClose;
         private int _timeWorkInMinutes;
         private List<int> _freeTimeSchedule;
-        private List<int> _fteeTimeSort;
+        private List<int> _freeTimeSort;
         private List<List<FilmData>> _scheduleFilms;
         private List<List<FilmData>> _sortSchedule;
         private List<FilmData> _bestSortEfficiency;
         private List<FilmData> _films;
+        private ScheduleAll _scheduleAll;
+        private TimeFreeAll _timeFreeAll;
 
-        public void Clean_FreeTime_Shcedule()
+        public TimeFreeAll TimeFreeAll
+        {
+            get => _timeFreeAll;
+            set => _timeFreeAll = value;
+        }
+
+        public ScheduleAll ScheduleAll
+        {
+            get => _scheduleAll;
+            set => _scheduleAll = value;
+        }
+        public void Clean_FreeTime_Schedule()
         {
             _freeTimeSchedule = new List<int>();
         }
         public void Clean_FreeTime_Sort()
         {
-            _fteeTimeSort = new List<int>();
+            _freeTimeSort = new List<int>();
         }
         public void Clean_Schedule_Sort()
         {
@@ -94,15 +107,15 @@ namespace HWCinema.CoreFolders
         }
         public List<int> AllFreeTime_Sort
         {
-            get => _fteeTimeSort;
+            get => _freeTimeSort;
             set
             {
-                if (_fteeTimeSort == null)
+                if (_freeTimeSort == null)
                 {
-                    _fteeTimeSort = new List<int>();
+                    _freeTimeSort = new List<int>();
                 }
-                _fteeTimeSort.Clear();
-                _fteeTimeSort.AddRange(value);
+                _freeTimeSort.Clear();
+                _freeTimeSort.AddRange(value);
             }
         }
         public List<int> AllFreeTime
@@ -282,6 +295,8 @@ namespace HWCinema.CoreFolders
             _freeTimeSchedule = new List<int>();
             _films = new List<FilmData>();
             _scheduleFilms = new List<List<FilmData>>();
+            _scheduleAll = new ScheduleAll();
+            _timeFreeAll = new TimeFreeAll();
         }
 
         public void SetTimeOpening(string hour, string minutes)

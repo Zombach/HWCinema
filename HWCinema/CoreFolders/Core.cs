@@ -6,6 +6,8 @@ namespace HWCinema.CoreFolders
     {
         private static Core _core;
         private int _id;
+        public ScheduleAll ScheduleAll { get; set; }
+        public TimeFreeAll TimeFreeAll { get; set; }
         public BoolFormSchedule BoolFormSchedule { get; set; }
         public string MyPathSettings { get; set; }
         public List <Hall> Halls { get; set; }
@@ -20,6 +22,8 @@ namespace HWCinema.CoreFolders
             FilmTmp = new List<FilmData>();
             MyPathSettings = @"../../Settings/Settings.txt";
             BoolFormSchedule = new BoolFormSchedule();
+            ScheduleAll = new ScheduleAll();
+            TimeFreeAll = new TimeFreeAll();
         }
 
         public static Core GetCore()
@@ -39,12 +43,13 @@ namespace HWCinema.CoreFolders
 
         public void CreateSchedule()
         {
+            Films = ScheduleAll.Bases;
             foreach (Hall hall in Halls)
             {
                 if (hall.GetScheduleFilms != null)
                 {
                     hall.Clean_Schedule_Films();
-                    hall.Clean_FreeTime_Shcedule();
+                    hall.Clean_FreeTime_Schedule();
                 }
                 if (hall.GetSortFilms != null)
                 {
@@ -76,10 +81,7 @@ namespace HWCinema.CoreFolders
         }
         private void FilmsCopy(TmpData tmpData)
         {
-            foreach (FilmData films in tmpData.Films)
-            {
-                FilmTmp.Add(films);
-            }
+            FilmTmp.AddRange(tmpData.Films);
         }
 
         private void  WriteInHall(Hall hall, TmpData tmpData)
@@ -104,9 +106,11 @@ namespace HWCinema.CoreFolders
         }
         private void Write(Hall hall, TmpData tmpData)
         {
-            hall.SetFilms = tmpData.Films;
+            ScheduleAll.Variants.Add(tmpData.Films);
+            hall.ScheduleAll.Variants.Add(tmpData.Films);
             tmpData.Films.Clear();
             hall.AllFreeTime.Add(tmpData.Times);
+
         }        
     }
 }

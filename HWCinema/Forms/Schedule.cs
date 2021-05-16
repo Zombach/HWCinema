@@ -40,7 +40,7 @@ namespace HWCinema.Forms
 
         private void FormFilmsManager()
         {
-            ScheduleManager filmsManager = new ScheduleManager(this);
+            FilmsManager filmsManager = new FilmsManager(this);
             _filmsManager = filmsManager;
             filmsManager.Show();
             IsOpenFilmsManager = true;
@@ -57,7 +57,7 @@ namespace HWCinema.Forms
         private void ClearLists()
         {
             _core.Halls.Clear();
-            _core.Films.Clear();
+            _core.ScheduleAll.Bases.Clear();
         }
 
         private void CleanAllListBoxes()
@@ -145,7 +145,7 @@ namespace HWCinema.Forms
             switch (type)
             {
                 case 0:
-                    _tmpScheduleFilms.AddRange(hall.GetScheduleFilms);
+                    _tmpScheduleFilms.AddRange(hall.ScheduleAll.Variants);
                     _freeTime.AddRange(hall.AllFreeTime);
                     break;
                 case 1:

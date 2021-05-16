@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace HWCinema.Forms
 {
-    partial class ScheduleManager
+    partial class FilmsManager
     {
         /// <summary>
         /// Required designer variable.
@@ -152,7 +152,7 @@ namespace HWCinema.Forms
             this.textBox3.Text = "Прокатный";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ScheduleManager
+            // FilmsManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,9 +170,9 @@ namespace HWCinema.Forms
             this.Location = new System.Drawing.Point(1530, 800);
             this.MaximumSize = new System.Drawing.Size(320, 173);
             this.MinimumSize = new System.Drawing.Size(320, 173);
-            this.Name = "ScheduleManager";
+            this.Name = "FilmsManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Schedule Manager";
+            this.Text = "Films Manager";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScheduleManager_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.FilmsSource)).EndInit();

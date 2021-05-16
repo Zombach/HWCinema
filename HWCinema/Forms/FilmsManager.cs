@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace HWCinema.Forms
 {
-    public partial class ScheduleManager : Form
+    public partial class FilmsManager : Form
     {
         private Core _core = Core.GetCore();
         private readonly Schedule _schedule;
@@ -15,10 +15,10 @@ namespace HWCinema.Forms
         private string _tmpName;
         private bool _isChangeName = false;
         public int DefaultTime { get; set; }
-        public ScheduleManager(Form schedule)
+        public FilmsManager(Form schedule)
         {
             InitializeComponent();
-            FilmsSource.DataSource = _core.Films;
+            FilmsSource.DataSource = _core.ScheduleAll.Bases;
             _countFilms = 0;
             DefaultTime = 60;
             _schedule = (Schedule)schedule;
@@ -34,14 +34,14 @@ namespace HWCinema.Forms
                     string name = "Фильм ";
                     filmData[i] = new FilmData(name + _indexName++, DefaultTime, _core.Id);                    
                 }
-                _core.Films.AddRange(filmData);
+                _core.ScheduleAll.Bases.AddRange(filmData);
             }
             else if(CountFilms.Value < _countFilms)
             {
                 int tmp = _countFilms - (int)CountFilms.Value;
                 for (int i = 0; i < tmp; i++)
                 {
-                    _core.Films.RemoveAt(_core.Films.Count - 1);
+                    _core.ScheduleAll.Bases.RemoveAt(_core.ScheduleAll.Bases.Count - 1);
                     _indexName--;
                 }                
             }
@@ -51,11 +51,11 @@ namespace HWCinema.Forms
 
         private void NameMovie_SelectedIndexChanged(object sender, EventArgs e)
         {            
-            if (_core.Films.Count != 0)
+            if (_core.ScheduleAll.Bases.Count != 0)
             {
                 if (NameMovie.SelectedIndex != -1)
                 {
-                    _tmpData = _core.Films[NameMovie.SelectedIndex];
+                    _tmpData = _core.ScheduleAll.Bases[NameMovie.SelectedIndex];
                     TimeFilm.Value = _tmpData.Time;
                     _index = NameMovie.SelectedIndex;
                 }
@@ -64,7 +64,7 @@ namespace HWCinema.Forms
 
         private void TimeFilm_ValueChanged(object sender, EventArgs e)
         {
-            _tmpData = _core.Films[NameMovie.SelectedIndex];
+            _tmpData = _core.ScheduleAll.Bases[NameMovie.SelectedIndex];
             _tmpData.Time = (int)TimeFilm.Value;
         }
 
@@ -76,7 +76,7 @@ namespace HWCinema.Forms
 
         private void ChangeNameMovies()
         {
-            _core.Films[_index].Name = _tmpName;
+            _core.ScheduleAll.Bases[_index].Name = _tmpName;
             FilmsSource.ResetBindings(true);            
         }
 
